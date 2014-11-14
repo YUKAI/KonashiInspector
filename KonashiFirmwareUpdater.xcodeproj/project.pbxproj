@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		121F95BF1E0B04F91708A864 /* libPods-KonashiFirmwareUpdater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7511E2317E762B1D4F7C851 /* libPods-KonashiFirmwareUpdater.a */; };
 		E92026E11A1602F8008E0924 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E92026E01A1602F8008E0924 /* main.m */; };
 		E92026E41A1602F8008E0924 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E92026E31A1602F8008E0924 /* AppDelegate.m */; };
-		E92026E71A1602F8008E0924 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E92026E61A1602F8008E0924 /* ViewController.m */; };
 		E92026EA1A1602F8008E0924 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E92026E81A1602F8008E0924 /* Main.storyboard */; };
 		E92026EC1A1602F8008E0924 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E92026EB1A1602F8008E0924 /* Images.xcassets */; };
 		E92026EF1A1602F8008E0924 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E92026ED1A1602F8008E0924 /* LaunchScreen.xib */; };
 		E92026FB1A1602F8008E0924 /* KonashiFirmwareUpdaterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E92026FA1A1602F8008E0924 /* KonashiFirmwareUpdaterTests.m */; };
+		E920270F1A16033E008E0924 /* OTAFirmwareTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E920270A1A16033E008E0924 /* OTAFirmwareTableViewController.m */; };
+		E92027101A16033E008E0924 /* OTAUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E920270D1A16033E008E0924 /* OTAUpdateViewController.m */; };
+		E92027151A16052E008E0924 /* Konashi+OTA.m in Sources */ = {isa = PBXBuildFile; fileRef = E92027141A16052E008E0924 /* Konashi+OTA.m */; };
+		E99ACDDC1A1608C4001FEB35 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E99ACDDB1A1608C4001FEB35 /* libz.dylib */; };
+		E99ACDE01A160C81001FEB35 /* koshian02-uart.ota.bin in Resources */ = {isa = PBXBuildFile; fileRef = E99ACDDF1A160C80001FEB35 /* koshian02-uart.ota.bin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,19 +32,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02EDCFABE9ACEB293B64A748 /* Pods-KonashiFirmwareUpdater.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonashiFirmwareUpdater.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KonashiFirmwareUpdater/Pods-KonashiFirmwareUpdater.debug.xcconfig"; sourceTree = "<group>"; };
+		E7511E2317E762B1D4F7C851 /* libPods-KonashiFirmwareUpdater.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KonashiFirmwareUpdater.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E788A88AE6BFA7336EEAA8D3 /* Pods-KonashiFirmwareUpdater.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonashiFirmwareUpdater.release.xcconfig"; path = "Pods/Target Support Files/Pods-KonashiFirmwareUpdater/Pods-KonashiFirmwareUpdater.release.xcconfig"; sourceTree = "<group>"; };
 		E92026DB1A1602F8008E0924 /* KonashiFirmwareUpdater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KonashiFirmwareUpdater.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92026DF1A1602F8008E0924 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E92026E01A1602F8008E0924 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E92026E21A1602F8008E0924 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E92026E31A1602F8008E0924 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E92026E51A1602F8008E0924 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E92026E61A1602F8008E0924 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E92026E91A1602F8008E0924 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E92026EB1A1602F8008E0924 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E92026EE1A1602F8008E0924 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E92026F41A1602F8008E0924 /* KonashiFirmwareUpdaterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KonashiFirmwareUpdaterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92026F91A1602F8008E0924 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E92026FA1A1602F8008E0924 /* KonashiFirmwareUpdaterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KonashiFirmwareUpdaterTests.m; sourceTree = "<group>"; };
+		E92027091A16033E008E0924 /* OTAFirmwareTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAFirmwareTableViewController.h; sourceTree = "<group>"; };
+		E920270A1A16033E008E0924 /* OTAFirmwareTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAFirmwareTableViewController.m; sourceTree = "<group>"; };
+		E920270C1A16033E008E0924 /* OTAUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAUpdateViewController.h; sourceTree = "<group>"; };
+		E920270D1A16033E008E0924 /* OTAUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAUpdateViewController.m; sourceTree = "<group>"; };
+		E92027131A16052E008E0924 /* Konashi+OTA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Konashi+OTA.h"; sourceTree = "<group>"; };
+		E92027141A16052E008E0924 /* Konashi+OTA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Konashi+OTA.m"; sourceTree = "<group>"; };
+		E99ACDDB1A1608C4001FEB35 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		E99ACDDF1A160C80001FEB35 /* koshian02-uart.ota.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "koshian02-uart.ota.bin"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +61,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E99ACDDC1A1608C4001FEB35 /* libz.dylib in Frameworks */,
+				121F95BF1E0B04F91708A864 /* libPods-KonashiFirmwareUpdater.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +76,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8374A7DAC8AF3C4D3CB24866 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E99ACDDB1A1608C4001FEB35 /* libz.dylib */,
+				E7511E2317E762B1D4F7C851 /* libPods-KonashiFirmwareUpdater.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D36260C32F9C6253862AFACB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				02EDCFABE9ACEB293B64A748 /* Pods-KonashiFirmwareUpdater.debug.xcconfig */,
+				E788A88AE6BFA7336EEAA8D3 /* Pods-KonashiFirmwareUpdater.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E92026D21A1602F8008E0924 = {
 			isa = PBXGroup;
 			children = (
 				E92026DD1A1602F8008E0924 /* KonashiFirmwareUpdater */,
 				E92026F71A1602F8008E0924 /* KonashiFirmwareUpdaterTests */,
 				E92026DC1A1602F8008E0924 /* Products */,
+				D36260C32F9C6253862AFACB /* Pods */,
+				8374A7DAC8AF3C4D3CB24866 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,10 +117,11 @@
 		E92026DD1A1602F8008E0924 /* KonashiFirmwareUpdater */ = {
 			isa = PBXGroup;
 			children = (
+				E99ACDDD1A160C80001FEB35 /* Resource */,
+				E92027111A16052E008E0924 /* Category */,
+				E92027041A16033E008E0924 /* Class */,
 				E92026E21A1602F8008E0924 /* AppDelegate.h */,
 				E92026E31A1602F8008E0924 /* AppDelegate.m */,
-				E92026E51A1602F8008E0924 /* ViewController.h */,
-				E92026E61A1602F8008E0924 /* ViewController.m */,
 				E92026E81A1602F8008E0924 /* Main.storyboard */,
 				E92026EB1A1602F8008E0924 /* Images.xcassets */,
 				E92026ED1A1602F8008E0924 /* LaunchScreen.xib */,
@@ -119,6 +156,66 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E92027041A16033E008E0924 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				E92027081A16033E008E0924 /* OTAFirmwareTableViewController */,
+				E920270B1A16033E008E0924 /* OTAUpdateViewController */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		E92027081A16033E008E0924 /* OTAFirmwareTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E92027091A16033E008E0924 /* OTAFirmwareTableViewController.h */,
+				E920270A1A16033E008E0924 /* OTAFirmwareTableViewController.m */,
+			);
+			path = OTAFirmwareTableViewController;
+			sourceTree = "<group>";
+		};
+		E920270B1A16033E008E0924 /* OTAUpdateViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E920270C1A16033E008E0924 /* OTAUpdateViewController.h */,
+				E920270D1A16033E008E0924 /* OTAUpdateViewController.m */,
+			);
+			path = OTAUpdateViewController;
+			sourceTree = "<group>";
+		};
+		E92027111A16052E008E0924 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				E92027121A16052E008E0924 /* Konashi+OTA */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		E92027121A16052E008E0924 /* Konashi+OTA */ = {
+			isa = PBXGroup;
+			children = (
+				E92027131A16052E008E0924 /* Konashi+OTA.h */,
+				E92027141A16052E008E0924 /* Konashi+OTA.m */,
+			);
+			path = "Konashi+OTA";
+			sourceTree = "<group>";
+		};
+		E99ACDDD1A160C80001FEB35 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				E99ACDDE1A160C80001FEB35 /* Firmware */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		E99ACDDE1A160C80001FEB35 /* Firmware */ = {
+			isa = PBXGroup;
+			children = (
+				E99ACDDF1A160C80001FEB35 /* koshian02-uart.ota.bin */,
+			);
+			path = Firmware;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +223,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E92026FE1A1602F8008E0924 /* Build configuration list for PBXNativeTarget "KonashiFirmwareUpdater" */;
 			buildPhases = (
+				EED0568458B87ED94E9E0902 /* Check Pods Manifest.lock */,
 				E92026D71A1602F8008E0924 /* Sources */,
 				E92026D81A1602F8008E0924 /* Frameworks */,
 				E92026D91A1602F8008E0924 /* Resources */,
+				83F08DA58D43E71458365343 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -202,6 +301,7 @@
 				E92026EA1A1602F8008E0924 /* Main.storyboard in Resources */,
 				E92026EF1A1602F8008E0924 /* LaunchScreen.xib in Resources */,
 				E92026EC1A1602F8008E0924 /* Images.xcassets in Resources */,
+				E99ACDE01A160C81001FEB35 /* koshian02-uart.ota.bin in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,13 +314,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		83F08DA58D43E71458365343 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KonashiFirmwareUpdater/Pods-KonashiFirmwareUpdater-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EED0568458B87ED94E9E0902 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E92026D71A1602F8008E0924 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E92026E71A1602F8008E0924 /* ViewController.m in Sources */,
+				E92027101A16033E008E0924 /* OTAUpdateViewController.m in Sources */,
 				E92026E41A1602F8008E0924 /* AppDelegate.m in Sources */,
+				E920270F1A16033E008E0924 /* OTAFirmwareTableViewController.m in Sources */,
+				E92027151A16052E008E0924 /* Konashi+OTA.m in Sources */,
 				E92026E11A1602F8008E0924 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,20 +476,46 @@
 		};
 		E92026FF1A1602F8008E0924 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02EDCFABE9ACEB293B64A748 /* Pods-KonashiFirmwareUpdater.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KonashiFirmwareUpdater/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"Pods-KonashiFirmwareUpdater-SVProgressHUD\"",
+					"-l\"Pods-KonashiFirmwareUpdater-konashi-ios-sdk\"",
+					"-framework",
+					"\"CoreBluetooth\"",
+					"-framework",
+					"\"JavaScriptCore\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		E92027001A1602F8008E0924 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E788A88AE6BFA7336EEAA8D3 /* Pods-KonashiFirmwareUpdater.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KonashiFirmwareUpdater/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"Pods-KonashiFirmwareUpdater-SVProgressHUD\"",
+					"-l\"Pods-KonashiFirmwareUpdater-konashi-ios-sdk\"",
+					"-framework",
+					"\"CoreBluetooth\"",
+					"-framework",
+					"\"JavaScriptCore\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -412,6 +573,7 @@
 				E92027001A1602F8008E0924 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E92027011A1602F8008E0924 /* Build configuration list for PBXNativeTarget "KonashiFirmwareUpdaterTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +582,7 @@
 				E92027031A1602F8008E0924 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
