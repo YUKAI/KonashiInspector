@@ -12,6 +12,7 @@
 @interface OTAFirmwareTableViewController ()
 {
 	NSArray *contents;
+	NSArray *serverContents;
 }
 
 @end
@@ -33,12 +34,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return 1;
+	return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [contents count];
+	return section == 0 ? [contents count] : [serverContents count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -49,16 +50,43 @@
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
 	}
 	
-	cell.textLabel.text = contents[indexPath.row];
+	if (indexPath.section == 0) {
+		cell.textLabel.text = contents[indexPath.row];
+	}
+	else if (indexPath.section == 1) {
+		cell.textLabel.text = serverContents[indexPath.row][@"title"];
+	}
 	
 	return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[[NSNotificationCenter defaultCenter] postNotificationName:OTAFirmwareSelectedNotification object:contents[indexPath.row]];
-	[self dismissViewControllerAnimated:YES completion:^{
-	}];
+	if (indexPath.section == 0) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:OTAFirmwareSelectedNotification object:nil userInfo:@{@"filename":contents[indexPath.row], @"data":[[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:contents[indexPath.row] ofType:@"bin"]]}];
+		[self dismissViewControllerAnimated:YES completion:^{
+		}];
+	}
+	else {
+		[SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
+		[NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:serverContents[indexPath.row][@"url"]]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+			if (connectionError == nil) {
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[[NSNotificationCenter defaultCenter] postNotificationName:OTAFirmwareSelectedNotification object:nil userInfo:@{@"filename":serverContents[indexPath.row][@"title"],@"data":data}];
+					[self dismissViewControllerAnimated:YES completion:^{
+					}];
+				});
+			}
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[SVProgressHUD dismiss];
+			});
+		}];
+	}
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+	return section == 0 ? @"Device" : @"Server";
 }
 
 #pragma mark -
@@ -75,8 +103,21 @@
 		}
 	}
 	contents = [array copy];
-	[self.tableView reloadData];
-	[SVProgressHUD dismiss];
+	__weak typeof(self) bself = self;
+	[NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://konashi.ux-xu.com/api/firmwares/list.json"]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+		if (connectionError == nil) {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				NSError *e = nil;
+				serverContents = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&e];
+				[bself.tableView reloadData];
+			});
+		}
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[SVProgressHUD dismiss];
+			[bself.tableView reloadData];
+			[bself.refreshControl endRefreshing];
+		});
+	}];
 	[self.refreshControl endRefreshing];
 }
 

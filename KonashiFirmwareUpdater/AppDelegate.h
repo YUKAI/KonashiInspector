@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define KONASHI_DEBUG
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

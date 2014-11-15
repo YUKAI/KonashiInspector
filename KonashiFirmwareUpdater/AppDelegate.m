@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "JDStatusBarNotification.h"
 #import "Konashi.h"
+#import "FontAwesomeKit.h"
 
 @interface AppDelegate ()
 
@@ -32,6 +33,20 @@
 	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventDisconnectedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
 		[JDStatusBarNotification dismiss];
 	}];
+	
+	UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+	[tabBarController.tabBar.items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		UITabBarItem *item = obj;
+		UIImage *image = nil;
+		if (idx == 0) {
+			image = [[FAKFontAwesome wifiIconWithSize:21] imageWithSize:CGSizeMake(25, 25)];
+		}
+		else if (idx == 1) {
+			image = [[FAKFontAwesome terminalIconWithSize:21] imageWithSize:CGSizeMake(25, 25)];
+		}
+		[item setImage:image];
+	}];
+	
 	return YES;
 }
 

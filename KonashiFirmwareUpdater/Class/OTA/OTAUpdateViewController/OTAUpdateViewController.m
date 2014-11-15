@@ -29,6 +29,7 @@ typedef NS_ENUM(NSUInteger, OTAStatus) {
 	UIButton *selectButton;
 	UIButton *connectButton;
 	UIButton *updateButton;
+	NSData *firmwareData;
 }
 
 @end
@@ -102,8 +103,9 @@ typedef NS_ENUM(NSUInteger, OTAStatus) {
 		[SVProgressHUD dismiss];
 	}];
 	[[NSNotificationCenter defaultCenter] addObserverForName:OTAFirmwareSelectedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-		NSString *filename = note.object;
+		NSString *filename = note.userInfo[@"filename"];
 		self.firmwareFilename = filename;
+		firmwareData = note.userInfo[@"data"];
 		[self updateButtonState];
 		[self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0], [NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
 	}];
@@ -299,25 +301,29 @@ typedef NS_ENUM(NSUInteger, OTAStatus) {
 		currentStatus = OTAStatusWaiting;
 	}
 	else {
-		currentStatus = OTAStatusUpdating;
-		[[Konashi shared] setOta_progressBlock:^(CGFloat progress, NSString *status) {
-			dispatch_async(dispatch_get_main_queue(), ^{
-				currentStatus = OTAStatusUpdating;
-				if (progress == -1) {
-					[SVProgressHUD showWithStatus:status maskType:SVProgressHUDMaskTypeGradient];
-				}
-				else if (progress == 1) {
-					[SVProgressHUD showSuccessWithStatus:status];
-					currentStatus = OTAStatusFinished;
-				}
-				else {
-					[SVProgressHUD showProgress:progress status:status maskType:SVProgressHUDMaskTypeGradient];
-				}
-			});
-		}];
-		
-		NSData *firmwareData = [[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.firmwareFilename ofType:@"bin"]];
-		[[Konashi shared] ota_updateFirmware:firmwareData];
+		if (firmwareData) {
+			currentStatus = OTAStatusUpdating;
+			[[Konashi shared] setOta_progressBlock:^(CGFloat progress, NSString *status) {
+				dispatch_async(dispatch_get_main_queue(), ^{
+					currentStatus = OTAStatusUpdating;
+					if (progress == -1) {
+						[SVProgressHUD showWithStatus:status maskType:SVProgressHUDMaskTypeGradient];
+					}
+					else if (progress == 1) {
+						[SVProgressHUD showSuccessWithStatus:status];
+						currentStatus = OTAStatusFinished;
+					}
+					else {
+						[SVProgressHUD showProgress:progress status:status maskType:SVProgressHUDMaskTypeGradient];
+					}
+				});
+			}];
+			
+			[[Konashi shared] ota_updateFirmware:firmwareData];
+		}
+		else {
+			[SVProgressHUD showErrorWithStatus:@"Invalid data"];
+		}
 	}
 }
 

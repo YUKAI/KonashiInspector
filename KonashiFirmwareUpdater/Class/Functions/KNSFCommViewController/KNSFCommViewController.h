@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KNSFCommViewController : UIViewController <UIActionSheetDelegate>
+@interface KNSFCommViewController : UIViewController <UIActionSheetDelegate, UITextFieldDelegate>
 
 @end

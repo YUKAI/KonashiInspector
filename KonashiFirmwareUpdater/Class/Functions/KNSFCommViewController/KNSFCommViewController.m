@@ -9,13 +9,14 @@
 #import "KNSFCommViewController.h"
 #import "AMViralSwitch.h"
 #import "Konashi.h"
+#import "FontAwesomeKit.h"
 
-#define BaseViewDefaultBackgroundColor [UIColor colorWithRed:0.925 green:0.941 blue:0.945 alpha:1.000]
+#define BaseViewDefaultBackgroundColor [UIColor colorWithRed:0.000 green:0.478 blue:1.000 alpha:1.000]
 
 @interface KNSFCommViewController ()
 {
 	KonashiUartBaudrate baudrate_;
-	
+	KonashiI2CMode i2cMode_;
 	__weak IBOutlet AMViralSwitch *uartEnableSwitch_;
 	__weak IBOutlet UILabel *uartBaudrateLabel_;
 	__weak IBOutlet UIButton *uartBaudrateChangeButton_;
@@ -41,14 +42,20 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	baudrate_ = KonashiUartBaudrateRate2K4;
+	self.title = @"Command";
 	baudrateList_ = @[@"2400", @"9600", @"19200", @"38400", @"57600", @"76800", @"115200"];
-	uartBaudrateLabel_.text = @"2400";
-	
+	uartBaudrateLabel_.text = @"9600";
+	baudrate_ = KonashiUartBaudrateRate9K6;
+	uartSendDataTextField_.delegate = self;
 	uartBaudrateChangeButton_.layer.borderColor = uartBaudrateChangeButton_.tintColor.CGColor;
 	uartBaudrateChangeButton_.layer.borderWidth = 1;
-	uartBaudrateChangeButton_.layer.cornerRadius = 14;
+	uartBaudrateChangeButton_.layer.cornerRadius = 13;
+	uartSendButton_.layer.borderColor = uartBaudrateChangeButton_.tintColor.CGColor;
+	uartSendButton_.layer.borderWidth = 1;
+	uartSendButton_.layer.cornerRadius = 15;
+	uartSendDataTextField_.text = @"abc";
 	
+	i2cMode_ = KonashiI2CModeEnable100K;
 	i2cSendDataButton_.layer.borderWidth = 1;
 	i2cSendDataButton_.layer.borderColor = i2cSendDataButton_.tintColor.CGColor;
 	i2cSendDataButton_.layer.cornerRadius = 15;
@@ -56,12 +63,39 @@
 	i2cReceiveDataButton_.layer.borderColor = i2cReceiveDataButton_.tintColor.CGColor;
 	i2cReceiveDataButton_.layer.cornerRadius = 15;
 	
+	uartEnableSwitch_.enabled = [Konashi isConnected];
+	i2cEnableSwitch_.enabled = [Konashi isConnected];
+	
+	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventConnectedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+		uartEnableSwitch_.enabled = [Konashi isConnected];
+		i2cEnableSwitch_.enabled = [Konashi isConnected];
+	}];
 	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventDisconnectedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
 		[uartEnableSwitch_ setOn:NO animated:YES];
 		[uartEnableSwitch_ performSelector:@selector(switchChanged:) withObject:uartEnableSwitch_];
 		[i2cEnableSwitch_ setOn:NO animated:YES];
 		[i2cEnableSwitch_ performSelector:@selector(switchChanged:) withObject:i2cEnableSwitch_];
 		[self i2cEnableSwitchValueChanged:i2cEnableSwitch_];
+		
+		uartEnableSwitch_.enabled = [Konashi isConnected];
+		i2cEnableSwitch_.enabled = [Konashi isConnected];
+	}];
+	
+	[[Konashi shared] setUartRxCompleteHandler:^(NSData *data) {
+		NSString *string = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+		NSString *text = [uartReceivedDataTextView_.text stringByAppendingString:string];
+		uartReceivedDataTextView_.text = text;
+		NSLog(@"uart RX complete:%@(%@:length = %ld)", string, [data description], data.length);
+	}];
+	[[Konashi shared] setI2cReadCompleteHandler:^(NSData *data) {
+		NSLog(@"i2c read complete:(%@:length = %ld)", [data description], data.length);
+		unsigned char d[[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength]];
+		[Konashi i2cRead:(int)[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength] data:d];
+		[NSThread sleepForTimeInterval:0.01];
+		[Konashi i2cStopCondition];
+		for (NSInteger i = 0; i < [[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength]; i++) {
+			i2cReceivedDataTextView_.text = [i2cReceivedDataTextView_.text stringByAppendingString:[NSString stringWithFormat:@"%d", d[i]]];
+		}
 	}];
 }
 
@@ -96,28 +130,28 @@
 													  AMElementToValue: uartBaudrateChangeButton_.tintColor},
 												   @{ AMElementView: uartBaudrateChangeButton_.layer,
 													  AMElementKeyPath: @"borderColor",
-													  AMElementToValue: (id)[UIColor colorWithRed:0.000 green:0.478 blue:1.000 alpha:1.000].CGColor},
+													  AMElementToValue: (id)BaseViewDefaultBackgroundColor.CGColor},
 												   ];
 		
 		i2cEnableSwitch_.animationElementsOn = @[
 												  @{ AMElementView: i2cLabel_,
 													 AMElementKeyPath: @"textColor",
 													 AMElementToValue: [UIColor whiteColor] },
-												  @{ AMElementView: i2cSpeedSegmentedControl_,
-													 AMElementKeyPath: @"tintColor",
-													 AMElementToValue: [UIColor whiteColor]},
 												  ];
 		i2cEnableSwitch_.animationElementsOff = @[
 												   @{ AMElementView: i2cLabel_,
 													  AMElementKeyPath: @"textColor",
 													  AMElementToValue: [UIColor blackColor] },
-												   @{ AMElementView: i2cSpeedSegmentedControl_,
-													  AMElementKeyPath: @"tintColor",
-													  AMElementToValue: [UIColor colorWithRed:0.000 green:0.478 blue:1.000 alpha:1.000]},
 												   ];
 	});
 }
 #pragma mark - 
+#pragma mark - UART
+
+- (IBAction)uartSendData:(id)sender
+{
+	[Konashi uartWriteData:[uartSendDataTextField_.text dataUsingEncoding:NSASCIIStringEncoding]];
+}
 
 - (IBAction)clearUartTextView:(id)sender
 {
@@ -145,6 +179,32 @@
 	[actionSheet showInView:self.view];
 }
 
+#pragma mark - I2C
+
+- (IBAction)i2cSendData:(id)sender
+{
+	unsigned char t[[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength]];
+	int i;
+	
+	for(i=0; i<(int)[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength]; i++){
+		t[i] = 'A' + i;
+	}
+	
+	[Konashi i2cStartCondition];
+	[NSThread sleepForTimeInterval:0.01];
+	[Konashi i2cWriteData:[NSData dataWithBytes:t length:(int)[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength]] address:0x1F];
+	[NSThread sleepForTimeInterval:0.01];
+	[Konashi i2cStopCondition];
+	[NSThread sleepForTimeInterval:0.01];
+}
+
+- (IBAction)i2cReceiveData:(id)sender
+{
+	[Konashi i2cStartCondition];
+	[NSThread sleepForTimeInterval:0.01];
+	[Konashi i2cReadRequest:(int)[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength] address:0x1F];
+}
+
 - (IBAction)clearI2CTextView:(id)sender
 {
 	i2cReceivedDataTextView_.text = @"";
@@ -155,21 +215,25 @@
 	UISwitch *button = sender;
 	UIColor *color = [UIColor whiteColor];
 	if (button.on == NO) {
-		color = [UIColor colorWithRed:0.000 green:0.478 blue:1.000 alpha:1.000];
+		color = BaseViewDefaultBackgroundColor;
+		i2cMode_ = KonashiI2CModeDisable;
 	}
 	
 	[UIView animateWithDuration:0.35 animations:^{
 		i2cSpeedSegmentedControl_.tintColor = color;
 	}];
+	[Konashi i2cMode:i2cMode_];
 }
 - (IBAction)i2cSpeedSegmentedControlIndexChanged:(id)sender
 {
 	UISegmentedControl *segmentedControl = sender;
-	KonashiI2CMode mode = KonashiI2CModeEnable100K;
 	if (segmentedControl.selectedSegmentIndex == 1) {
-		mode = KonashiI2CModeEnable400K;
+		i2cMode_ = KonashiI2CModeEnable400K;
 	}
-	[Konashi i2cMode:mode];
+	else {
+		i2cMode_ = KonashiI2CModeEnable100K;
+	}
+	[Konashi i2cMode:i2cMode_];
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -181,6 +245,14 @@
 		uartBaudrateLabel_.text = baudrateList_[buttonIndex - 1];
 		[Konashi uartBaudrate:baudrate_];
 	}
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	return YES;
 }
 
 @end
