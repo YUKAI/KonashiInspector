@@ -54,8 +54,6 @@
 	uartSendButton_.layer.borderWidth = 1;
 	uartSendButton_.layer.cornerRadius = 15;
 	uartSendDataTextField_.text = @"abc";
-	uartSendButton_.enabled = uartEnableSwitch_.on;
-	uartBaudrateChangeButton_.enabled = !uartEnableSwitch_.on;
 	
 	i2cMode_ = KonashiI2CModeEnable100K;
 	i2cSendDataButton_.layer.borderWidth = 1;
@@ -64,16 +62,11 @@
 	i2cReceiveDataButton_.layer.borderWidth = 1;
 	i2cReceiveDataButton_.layer.borderColor = i2cReceiveDataButton_.tintColor.CGColor;
 	i2cReceiveDataButton_.layer.cornerRadius = 15;
-	i2cSpeedSegmentedControl_.enabled = !i2cEnableSwitch_.on;
-	i2cSendDataButton_.enabled = i2cEnableSwitch_.on;
-	i2cReceiveDataButton_.enabled = i2cEnableSwitch_.on;
 	
-	uartEnableSwitch_.enabled = [Konashi isConnected];
-	i2cEnableSwitch_.enabled = [Konashi isConnected];
+	[self updateControlState];
 	
 	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventConnectedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-		uartEnableSwitch_.enabled = [Konashi isConnected];
-		i2cEnableSwitch_.enabled = [Konashi isConnected];
+		[self updateControlState];
 	}];
 	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventDisconnectedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
 		[uartEnableSwitch_ setOn:NO animated:YES];
@@ -82,8 +75,7 @@
 		[i2cEnableSwitch_ performSelector:@selector(switchChanged:) withObject:i2cEnableSwitch_];
 		[self i2cEnableSwitchValueChanged:i2cEnableSwitch_];
 		
-		uartEnableSwitch_.enabled = [Konashi isConnected];
-		i2cEnableSwitch_.enabled = [Konashi isConnected];
+		[self updateControlState];
 	}];
 	
 	[[Konashi shared] setUartRxCompleteHandler:^(NSData *data) {
@@ -242,9 +234,7 @@
 	}];
 	
 	[Konashi i2cMode:i2cMode_];
-	i2cSpeedSegmentedControl_.enabled = !sw.on;
-	i2cSendDataButton_.enabled = sw.on;
-	i2cReceiveDataButton_.enabled = sw.on;
+	[self updateControlState];
 }
 - (IBAction)i2cSpeedSegmentedControlIndexChanged:(id)sender
 {
@@ -257,6 +247,18 @@
 	}
 	NSLog(@"set i2c mode:%d", i2cMode_);
 	[Konashi i2cMode:i2cMode_];
+}
+
+- (void)updateControlState
+{
+	uartEnableSwitch_.enabled = [Konashi isConnected];
+	i2cEnableSwitch_.enabled = [Konashi isConnected];
+	
+	uartSendButton_.enabled = uartEnableSwitch_.on;
+	uartBaudrateChangeButton_.enabled = !uartEnableSwitch_.on;
+	i2cSpeedSegmentedControl_.enabled = !i2cEnableSwitch_.on;
+	i2cSendDataButton_.enabled = i2cEnableSwitch_.on;
+	i2cReceiveDataButton_.enabled = i2cEnableSwitch_.on;
 }
 
 #pragma mark - UIActionSheetDelegate
