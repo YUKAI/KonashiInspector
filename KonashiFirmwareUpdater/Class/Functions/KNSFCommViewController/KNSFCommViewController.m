@@ -54,6 +54,8 @@
 	uartSendButton_.layer.borderWidth = 1;
 	uartSendButton_.layer.cornerRadius = 15;
 	uartSendDataTextField_.text = @"abc";
+	uartSendButton_.enabled = uartEnableSwitch_.on;
+	uartBaudrateChangeButton_.enabled = !uartEnableSwitch_.on;
 	
 	i2cMode_ = KonashiI2CModeEnable100K;
 	i2cSendDataButton_.layer.borderWidth = 1;
@@ -62,6 +64,9 @@
 	i2cReceiveDataButton_.layer.borderWidth = 1;
 	i2cReceiveDataButton_.layer.borderColor = i2cReceiveDataButton_.tintColor.CGColor;
 	i2cReceiveDataButton_.layer.cornerRadius = 15;
+	i2cSpeedSegmentedControl_.enabled = !i2cEnableSwitch_.on;
+	i2cSendDataButton_.enabled = i2cEnableSwitch_.on;
+	i2cReceiveDataButton_.enabled = i2cEnableSwitch_.on;
 	
 	uartEnableSwitch_.enabled = [Konashi isConnected];
 	i2cEnableSwitch_.enabled = [Konashi isConnected];
@@ -167,6 +172,9 @@
 	else {
 		[Konashi uartMode:KonashiUartModeDisable];
 	}
+	
+	uartBaudrateChangeButton_.enabled = !sw.on;
+	uartSendButton_.enabled = sw.on;
 }
 
 - (IBAction)uartBaudrateChangeButtonChanged:(id)sender
@@ -214,13 +222,9 @@
 
 - (IBAction)i2cEnableSwitchValueChanged:(id)sender
 {
-	UISwitch *button = sender;
+	UISwitch *sw = sender;
 	UIColor *color = [UIColor whiteColor];
-	if (button.on == NO) {
-		color = BaseViewDefaultBackgroundColor;
-		i2cMode_ = KonashiI2CModeDisable;
-	}
-	else {
+	if (sw.on) {
 		if (i2cSpeedSegmentedControl_.selectedSegmentIndex == 1) {
 			i2cMode_ = KonashiI2CModeEnable400K;
 		}
@@ -228,11 +232,19 @@
 			i2cMode_ = KonashiI2CModeEnable100K;
 		}
 	}
+	else {
+		color = BaseViewDefaultBackgroundColor;
+		i2cMode_ = KonashiI2CModeDisable;
+	}
 	
 	[UIView animateWithDuration:0.35 animations:^{
 		i2cSpeedSegmentedControl_.tintColor = color;
 	}];
+	
 	[Konashi i2cMode:i2cMode_];
+	i2cSpeedSegmentedControl_.enabled = !sw.on;
+	i2cSendDataButton_.enabled = sw.on;
+	i2cReceiveDataButton_.enabled = sw.on;
 }
 - (IBAction)i2cSpeedSegmentedControlIndexChanged:(id)sender
 {
