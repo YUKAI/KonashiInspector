@@ -65,10 +65,10 @@
 	
 	[self updateControlState];
 	
-	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventConnectedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+	[Konashi shared].connectedHandler = ^() {
 		[self updateControlState];
-	}];
-	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventDisconnectedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+	};
+	[Konashi shared].disconnectedHandler = ^() {
 		[uartEnableSwitch_ setOn:NO animated:YES];
 		[uartEnableSwitch_ performSelector:@selector(switchChanged:) withObject:uartEnableSwitch_];
 		[i2cEnableSwitch_ setOn:NO animated:YES];
@@ -76,16 +76,16 @@
 		[self i2cEnableSwitchValueChanged:i2cEnableSwitch_];
 		
 		[self updateControlState];
-	}];
+	};
 	
 	[[Konashi shared] setUartRxCompleteHandler:^(NSData *data) {
 		NSString *string = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
 		NSString *text = [uartReceivedDataTextView_.text stringByAppendingString:string];
 		uartReceivedDataTextView_.text = text;
-		NSLog(@"uart RX complete:%@(%@:length = %ld)", string, [data description], data.length);
+		NSLog(@"uart RX complete:%@(%@:length = %ld)", string, [data description], (unsigned long)data.length);
 	}];
 	[[Konashi shared] setI2cReadCompleteHandler:^(NSData *data) {
-		NSLog(@"i2c read complete:(%@:length = %ld)", [data description], data.length);
+		NSLog(@"i2c read complete:(%@:length = %ld)", [data description], (unsigned long)data.length);
 		unsigned char d[[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength]];
 		[Konashi i2cRead:(int)[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength] data:d];
 		[NSThread sleepForTimeInterval:0.01];
@@ -185,9 +185,7 @@
 {
 	NSLog(@"i2cSendData");
 	unsigned char t[[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength]];
-	int i;
-	
-	for(i=0; i<(int)[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength]; i++){
+	for(NSInteger i = 0; i < (int)[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength]; i++){
 		t[i] = 'A' + i;
 	}
 	
