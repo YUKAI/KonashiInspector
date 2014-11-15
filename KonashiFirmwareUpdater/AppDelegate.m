@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "JDStatusBarNotification.h"
+#import "Konashi.h"
 
 @interface AppDelegate ()
 
@@ -15,8 +17,21 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
 	// Override point for customization after application launch.
+	NSString *KonashiReadyToUseStyle = @"KonashiReadyToUseStyle";
+	[JDStatusBarNotification addStyleNamed:KonashiReadyToUseStyle prepare:^JDStatusBarStyle*(JDStatusBarStyle *style) {
+									   style.barColor = [UIColor colorWithRed:0.000 green:0.478 blue:1.000 alpha:1.000];
+									   style.textColor = [UIColor whiteColor];
+									   return style;
+								   }];
+	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventReadyToUseNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+		[JDStatusBarNotification showWithStatus:[NSString stringWithFormat:@"Connecting:%@", [Konashi shared].activePeripheral.peripheral.name] styleName:KonashiReadyToUseStyle];
+	}];
+	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventDisconnectedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+		[JDStatusBarNotification dismiss];
+	}];
 	return YES;
 }
 

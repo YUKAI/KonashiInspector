@@ -14,11 +14,13 @@
 		E92026EC1A1602F8008E0924 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E92026EB1A1602F8008E0924 /* Images.xcassets */; };
 		E92026EF1A1602F8008E0924 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E92026ED1A1602F8008E0924 /* LaunchScreen.xib */; };
 		E92026FB1A1602F8008E0924 /* KonashiFirmwareUpdaterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E92026FA1A1602F8008E0924 /* KonashiFirmwareUpdaterTests.m */; };
-		E920270F1A16033E008E0924 /* OTAFirmwareTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E920270A1A16033E008E0924 /* OTAFirmwareTableViewController.m */; };
-		E92027101A16033E008E0924 /* OTAUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E920270D1A16033E008E0924 /* OTAUpdateViewController.m */; };
 		E92027151A16052E008E0924 /* Konashi+OTA.m in Sources */ = {isa = PBXBuildFile; fileRef = E92027141A16052E008E0924 /* Konashi+OTA.m */; };
+		E98BF6DF1A17B28F0058FB92 /* KNSFCommViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E98BF6DE1A17B28F0058FB92 /* KNSFCommViewController.m */; };
 		E99ACDDC1A1608C4001FEB35 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E99ACDDB1A1608C4001FEB35 /* libz.dylib */; };
 		E99ACDE01A160C81001FEB35 /* koshian02-uart.ota.bin in Resources */ = {isa = PBXBuildFile; fileRef = E99ACDDF1A160C80001FEB35 /* koshian02-uart.ota.bin */; };
+		E99ACE071A1748DF001FEB35 /* OTAFirmwareTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99ACE031A1748DF001FEB35 /* OTAFirmwareTableViewController.m */; };
+		E99ACE081A1748DF001FEB35 /* OTAUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99ACE061A1748DF001FEB35 /* OTAUpdateViewController.m */; };
+		E99ACE0B1A1748EE001FEB35 /* KNSFFunctionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99ACE0A1A1748EE001FEB35 /* KNSFFunctionsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,14 +48,18 @@
 		E92026F41A1602F8008E0924 /* KonashiFirmwareUpdaterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KonashiFirmwareUpdaterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92026F91A1602F8008E0924 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E92026FA1A1602F8008E0924 /* KonashiFirmwareUpdaterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KonashiFirmwareUpdaterTests.m; sourceTree = "<group>"; };
-		E92027091A16033E008E0924 /* OTAFirmwareTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAFirmwareTableViewController.h; sourceTree = "<group>"; };
-		E920270A1A16033E008E0924 /* OTAFirmwareTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAFirmwareTableViewController.m; sourceTree = "<group>"; };
-		E920270C1A16033E008E0924 /* OTAUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAUpdateViewController.h; sourceTree = "<group>"; };
-		E920270D1A16033E008E0924 /* OTAUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAUpdateViewController.m; sourceTree = "<group>"; };
 		E92027131A16052E008E0924 /* Konashi+OTA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Konashi+OTA.h"; sourceTree = "<group>"; };
 		E92027141A16052E008E0924 /* Konashi+OTA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Konashi+OTA.m"; sourceTree = "<group>"; };
+		E98BF6DD1A17B28F0058FB92 /* KNSFCommViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNSFCommViewController.h; sourceTree = "<group>"; };
+		E98BF6DE1A17B28F0058FB92 /* KNSFCommViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNSFCommViewController.m; sourceTree = "<group>"; };
 		E99ACDDB1A1608C4001FEB35 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E99ACDDF1A160C80001FEB35 /* koshian02-uart.ota.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "koshian02-uart.ota.bin"; sourceTree = "<group>"; };
+		E99ACE021A1748DF001FEB35 /* OTAFirmwareTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAFirmwareTableViewController.h; sourceTree = "<group>"; };
+		E99ACE031A1748DF001FEB35 /* OTAFirmwareTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAFirmwareTableViewController.m; sourceTree = "<group>"; };
+		E99ACE051A1748DF001FEB35 /* OTAUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAUpdateViewController.h; sourceTree = "<group>"; };
+		E99ACE061A1748DF001FEB35 /* OTAUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAUpdateViewController.m; sourceTree = "<group>"; };
+		E99ACE091A1748EE001FEB35 /* KNSFFunctionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNSFFunctionsTableViewController.h; sourceTree = "<group>"; };
+		E99ACE0A1A1748EE001FEB35 /* KNSFFunctionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNSFFunctionsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,28 +165,10 @@
 		E92027041A16033E008E0924 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				E92027081A16033E008E0924 /* OTAFirmwareTableViewController */,
-				E920270B1A16033E008E0924 /* OTAUpdateViewController */,
+				E99ACDFE1A1748DF001FEB35 /* Functions */,
+				E99ACE001A1748DF001FEB35 /* OTA */,
 			);
 			path = Class;
-			sourceTree = "<group>";
-		};
-		E92027081A16033E008E0924 /* OTAFirmwareTableViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E92027091A16033E008E0924 /* OTAFirmwareTableViewController.h */,
-				E920270A1A16033E008E0924 /* OTAFirmwareTableViewController.m */,
-			);
-			path = OTAFirmwareTableViewController;
-			sourceTree = "<group>";
-		};
-		E920270B1A16033E008E0924 /* OTAUpdateViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E920270C1A16033E008E0924 /* OTAUpdateViewController.h */,
-				E920270D1A16033E008E0924 /* OTAUpdateViewController.m */,
-			);
-			path = OTAUpdateViewController;
 			sourceTree = "<group>";
 		};
 		E92027111A16052E008E0924 /* Category */ = {
@@ -200,6 +188,15 @@
 			path = "Konashi+OTA";
 			sourceTree = "<group>";
 		};
+		E98BF6DC1A17B2820058FB92 /* KNSFCommViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E98BF6DD1A17B28F0058FB92 /* KNSFCommViewController.h */,
+				E98BF6DE1A17B28F0058FB92 /* KNSFCommViewController.m */,
+			);
+			path = KNSFCommViewController;
+			sourceTree = "<group>";
+		};
 		E99ACDDD1A160C80001FEB35 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +211,51 @@
 				E99ACDDF1A160C80001FEB35 /* koshian02-uart.ota.bin */,
 			);
 			path = Firmware;
+			sourceTree = "<group>";
+		};
+		E99ACDFE1A1748DF001FEB35 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				E98BF6DC1A17B2820058FB92 /* KNSFCommViewController */,
+				E99ACDFF1A1748DF001FEB35 /* KNSFFunctionsTableViewController */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
+		E99ACDFF1A1748DF001FEB35 /* KNSFFunctionsTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E99ACE091A1748EE001FEB35 /* KNSFFunctionsTableViewController.h */,
+				E99ACE0A1A1748EE001FEB35 /* KNSFFunctionsTableViewController.m */,
+			);
+			path = KNSFFunctionsTableViewController;
+			sourceTree = "<group>";
+		};
+		E99ACE001A1748DF001FEB35 /* OTA */ = {
+			isa = PBXGroup;
+			children = (
+				E99ACE011A1748DF001FEB35 /* OTAFirmwareTableViewController */,
+				E99ACE041A1748DF001FEB35 /* OTAUpdateViewController */,
+			);
+			path = OTA;
+			sourceTree = "<group>";
+		};
+		E99ACE011A1748DF001FEB35 /* OTAFirmwareTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E99ACE021A1748DF001FEB35 /* OTAFirmwareTableViewController.h */,
+				E99ACE031A1748DF001FEB35 /* OTAFirmwareTableViewController.m */,
+			);
+			path = OTAFirmwareTableViewController;
+			sourceTree = "<group>";
+		};
+		E99ACE041A1748DF001FEB35 /* OTAUpdateViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E99ACE051A1748DF001FEB35 /* OTAUpdateViewController.h */,
+				E99ACE061A1748DF001FEB35 /* OTAUpdateViewController.m */,
+			);
+			path = OTAUpdateViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,11 +394,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E92027101A16033E008E0924 /* OTAUpdateViewController.m in Sources */,
 				E92026E41A1602F8008E0924 /* AppDelegate.m in Sources */,
-				E920270F1A16033E008E0924 /* OTAFirmwareTableViewController.m in Sources */,
+				E99ACE0B1A1748EE001FEB35 /* KNSFFunctionsTableViewController.m in Sources */,
 				E92027151A16052E008E0924 /* Konashi+OTA.m in Sources */,
+				E99ACE071A1748DF001FEB35 /* OTAFirmwareTableViewController.m in Sources */,
+				E99ACE081A1748DF001FEB35 /* OTAUpdateViewController.m in Sources */,
 				E92026E11A1602F8008E0924 /* main.m in Sources */,
+				E98BF6DF1A17B28F0058FB92 /* KNSFCommViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,19 +524,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KonashiFirmwareUpdater/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-l\"Pods-KonashiFirmwareUpdater-SVProgressHUD\"",
-					"-l\"Pods-KonashiFirmwareUpdater-konashi-ios-sdk\"",
-					"-framework",
-					"\"CoreBluetooth\"",
-					"-framework",
-					"\"JavaScriptCore\"",
-					"-framework",
-					"\"QuartzCore\"",
-					"-all_load",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -503,19 +537,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KonashiFirmwareUpdater/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-l\"Pods-KonashiFirmwareUpdater-SVProgressHUD\"",
-					"-l\"Pods-KonashiFirmwareUpdater-konashi-ios-sdk\"",
-					"-framework",
-					"\"CoreBluetooth\"",
-					"-framework",
-					"\"JavaScriptCore\"",
-					"-framework",
-					"\"QuartzCore\"",
-					"-all_load",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
