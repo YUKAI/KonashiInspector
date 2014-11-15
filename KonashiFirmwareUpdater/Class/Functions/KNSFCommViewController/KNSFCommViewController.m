@@ -183,6 +183,7 @@
 
 - (IBAction)i2cSendData:(id)sender
 {
+	NSLog(@"i2cSendData");
 	unsigned char t[[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength]];
 	int i;
 	
@@ -200,6 +201,7 @@
 
 - (IBAction)i2cReceiveData:(id)sender
 {
+	NSLog(@"i2cReceiveData");
 	[Konashi i2cStartCondition];
 	[NSThread sleepForTimeInterval:0.01];
 	[Konashi i2cReadRequest:(int)[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength] address:0x1F];
@@ -218,6 +220,14 @@
 		color = BaseViewDefaultBackgroundColor;
 		i2cMode_ = KonashiI2CModeDisable;
 	}
+	else {
+		if (i2cSpeedSegmentedControl_.selectedSegmentIndex == 1) {
+			i2cMode_ = KonashiI2CModeEnable400K;
+		}
+		else {
+			i2cMode_ = KonashiI2CModeEnable100K;
+		}
+	}
 	
 	[UIView animateWithDuration:0.35 animations:^{
 		i2cSpeedSegmentedControl_.tintColor = color;
@@ -233,6 +243,7 @@
 	else {
 		i2cMode_ = KonashiI2CModeEnable100K;
 	}
+	NSLog(@"set i2c mode:%d", i2cMode_);
 	[Konashi i2cMode:i2cMode_];
 }
 
@@ -244,6 +255,7 @@
 		baudrate_ = (KonashiUartBaudrate)([baudrateList_[buttonIndex - 1] integerValue] / 240);
 		uartBaudrateLabel_.text = baudrateList_[buttonIndex - 1];
 		[Konashi uartBaudrate:baudrate_];
+		NSLog(@"set baudrate:%d", baudrate_);
 	}
 }
 

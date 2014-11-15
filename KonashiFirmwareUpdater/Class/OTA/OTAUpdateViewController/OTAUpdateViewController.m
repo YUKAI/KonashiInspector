@@ -13,8 +13,6 @@
 #import "Konashi+OTA.h"
 #import "SVProgressHUD.h"
 
-#define KONASHI_DEBUG 1
-
 typedef NS_ENUM(NSUInteger, OTAStatus) {
 	OTAStatusInitialized,
 	OTAStatusWaiting,
