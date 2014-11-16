@@ -21,9 +21,10 @@
 	__weak IBOutlet UILabel *uartBaudrateLabel_;
 	__weak IBOutlet UIButton *uartBaudrateChangeButton_;
 	__weak IBOutlet UIButton *uartSendButton_;
-	__weak IBOutlet UITextField *uartSendDataTextField_;
+	__weak IBOutlet UITextField *uartSendStringTextField_;
 	__weak IBOutlet UITextView *uartReceivedDataTextView_;
 	__weak IBOutlet UILabel *uartLabel_;
+	__weak IBOutlet UISwitch *uartSendDataTypeSwitch_;
 	
 	__weak IBOutlet AMViralSwitch *i2cEnableSwitch_;
 	__weak IBOutlet UISegmentedControl *i2cSpeedSegmentedControl_;
@@ -46,14 +47,13 @@
 	baudrateList_ = @[@"2400", @"9600", @"19200", @"38400", @"57600", @"76800", @"115200"];
 	uartBaudrateLabel_.text = @"9600";
 	baudrate_ = KonashiUartBaudrateRate9K6;
-	uartSendDataTextField_.delegate = self;
+	uartSendStringTextField_.delegate = self;
 	uartBaudrateChangeButton_.layer.borderColor = uartBaudrateChangeButton_.tintColor.CGColor;
 	uartBaudrateChangeButton_.layer.borderWidth = 1;
 	uartBaudrateChangeButton_.layer.cornerRadius = 13;
 	uartSendButton_.layer.borderColor = uartBaudrateChangeButton_.tintColor.CGColor;
 	uartSendButton_.layer.borderWidth = 1;
 	uartSendButton_.layer.cornerRadius = 15;
-	uartSendDataTextField_.text = @"abc";
 	
 	i2cMode_ = KonashiI2CModeEnable100K;
 	i2cSendDataButton_.layer.borderWidth = 1;
@@ -145,10 +145,25 @@
 #pragma mark - 
 #pragma mark - UART
 
-- (IBAction)uartSendData:(id)sender
+- (IBAction)uartSendString:(id)sender
 {
-	[Konashi uartWriteData:[uartSendDataTextField_.text dataUsingEncoding:NSASCIIStringEncoding]];
+	if (uartEnableSwitch_.on == YES) {
+		NSMutableData *data = [NSMutableData new];
+		NSArray *byteStrings = [uartSendStringTextField_.text componentsSeparatedByString:@" "];
+		[byteStrings enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+			NSString *str = obj;
+			NSInteger i = [str integerValue];
+			[data appendBytes:&i length:1];
+		}];
+		NSLog(@"uart byte send :%@", [data description]);
+		[Konashi uartWriteData:data];
+	}
+	else {
+		[Konashi uartWriteString:uartSendStringTextField_.text];
+		NSLog(@"uart string send :%@", uartSendStringTextField_.text);
+	}
 }
+
 
 - (IBAction)clearUartTextView:(id)sender
 {
@@ -177,6 +192,12 @@
 	}
 	[actionSheet setCancelButtonIndex:0];
 	[actionSheet showInView:self.view];
+}
+
+- (IBAction)uartChangeSendDataType:(id)sender
+{
+	UISwitch *sw = sender;
+	uartSendStringTextField_.placeholder = sw.on == YES ? @"as byte" : @"as string";
 }
 
 #pragma mark - I2C

@@ -109,7 +109,7 @@ typedef NS_ENUM(NSUInteger, OTAStatus) {
 	}];
 	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventDidFindSoftwareRevisionStringNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
 		[self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
-	}];	
+	}];
 	currentStatus = OTAStatusInitialized;
 	[Konashi initialize];
 }

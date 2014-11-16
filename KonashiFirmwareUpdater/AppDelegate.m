@@ -39,9 +39,12 @@
 		UITabBarItem *item = obj;
 		UIImage *image = nil;
 		if (idx == 0) {
-			image = [[FAKFontAwesome wifiIconWithSize:21] imageWithSize:CGSizeMake(25, 25)];
+			image = [[FAKFontAwesome infoIconWithSize:21] imageWithSize:CGSizeMake(25, 25)];
 		}
 		else if (idx == 1) {
+			image = [[FAKFontAwesome wifiIconWithSize:21] imageWithSize:CGSizeMake(25, 25)];
+		}
+		else if (idx == 2) {
 			image = [[FAKFontAwesome terminalIconWithSize:21] imageWithSize:CGSizeMake(25, 25)];
 		}
 		[item setImage:image];
