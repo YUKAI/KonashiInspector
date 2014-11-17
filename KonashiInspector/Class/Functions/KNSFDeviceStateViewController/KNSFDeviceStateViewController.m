@@ -101,6 +101,12 @@
 	[self updateControlState];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[self updateControlState];
+}
+
 #pragma mark - 
 
 - (void)readRSSI

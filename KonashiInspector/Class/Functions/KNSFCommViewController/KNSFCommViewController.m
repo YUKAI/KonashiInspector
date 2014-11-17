@@ -153,7 +153,7 @@
 
 - (IBAction)uartSendString:(id)sender
 {
-	if (uartEnableSwitch_.on == YES) {
+	if (uartSendDataTypeSwitch_.on == YES) {
 		NSMutableData *data = [NSMutableData new];
 		NSArray *byteStrings = [uartSendStringTextField_.text componentsSeparatedByString:@" "];
 		[byteStrings enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
