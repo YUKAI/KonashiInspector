@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface KonashiFirmwareUpdaterTests : XCTestCase
+@interface KonashiInspectorTests : XCTestCase
 
 @end
 
-@implementation KonashiFirmwareUpdaterTests
+@implementation KonashiInspectorTests
 
 - (void)setUp {
     [super setUp];

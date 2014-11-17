@@ -475,7 +475,7 @@
                                     <constraint firstItem="LyF-8N-qhd" firstAttribute="leading" secondItem="aRD-1e-5B7" secondAttribute="leading" constant="16" id="qJu-8F-WQG"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="as string" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eGm-sC-oVZ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="as string" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eGm-sC-oVZ">
                                 <rect key="frame" x="16" y="73" width="475" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="XnA-bS-rDY"/>
@@ -550,9 +550,9 @@
                                 <exclude reference="OFd-HB-bLu"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="OJn-4Q-jVX"/>
                                 <exclude reference="gjB-kf-S0s"/>
                                 <exclude reference="hZC-dW-fAh"/>
+                                <exclude reference="OJn-4Q-jVX"/>
                                 <exclude reference="qIe-bT-DhV"/>
                             </mask>
                         </variation>
@@ -561,9 +561,9 @@
                                 <include reference="OFd-HB-bLu"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="OJn-4Q-jVX"/>
                                 <include reference="gjB-kf-S0s"/>
                                 <include reference="hZC-dW-fAh"/>
+                                <include reference="OJn-4Q-jVX"/>
                                 <include reference="qIe-bT-DhV"/>
                             </mask>
                         </variation>

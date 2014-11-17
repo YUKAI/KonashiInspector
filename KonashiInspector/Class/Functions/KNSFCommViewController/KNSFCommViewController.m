@@ -69,10 +69,16 @@
 		[self updateControlState];
 	};
 	[Konashi shared].disconnectedHandler = ^() {
+		BOOL previousState = uartEnableSwitch_.on;
 		[uartEnableSwitch_ setOn:NO animated:YES];
-		[uartEnableSwitch_ performSelector:@selector(switchChanged:) withObject:uartEnableSwitch_];
+		if (previousState == YES) {
+			[uartEnableSwitch_ performSelector:@selector(switchChanged:) withObject:uartEnableSwitch_];
+		}
+		previousState = i2cEnableSwitch_.on;
 		[i2cEnableSwitch_ setOn:NO animated:YES];
-		[i2cEnableSwitch_ performSelector:@selector(switchChanged:) withObject:i2cEnableSwitch_];
+		if (previousState == YES) {
+			[i2cEnableSwitch_ performSelector:@selector(switchChanged:) withObject:i2cEnableSwitch_];
+		}
 		[self i2cEnableSwitchValueChanged:i2cEnableSwitch_];
 		
 		[self updateControlState];
