@@ -1,0 +1,14 @@
+//
+//  Header.pch
+//  KonashiInspector
+//
+//  Created by Akira Matsuda on 11/19/14.
+//  Copyright (c) 2014 Akira Matsuda. All rights reserved.
+//
+
+#ifndef KonashiInspector_Header_pch
+#define KonashiInspector_Header_pch
+
+#define BaseViewDefaultBackgroundColor [UIColor colorWithRed:0.000 green:0.478 blue:1.000 alpha:1.000]
+
+#endif

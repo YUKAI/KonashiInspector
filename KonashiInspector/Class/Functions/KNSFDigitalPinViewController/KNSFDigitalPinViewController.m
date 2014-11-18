@@ -16,6 +16,7 @@
 {
 	[super viewDidLoad];
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([KNSFDigitalIOTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"Cell"];
+	self.tableView.clipsToBounds = YES;
 	[[Konashi shared] setDigitalInputDidChangeValueHandler:^(KonashiDigitalIOPin pin, int value) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:KNSFDigitalPinValueChangedNotification object:nil userInfo:@{@"pin":@(pin)}];
 	}];

@@ -11,8 +11,6 @@
 #import "Konashi.h"
 #import "FontAwesomeKit.h"
 
-#define BaseViewDefaultBackgroundColor [UIColor colorWithRed:0.000 green:0.478 blue:1.000 alpha:1.000]
-
 @interface KNSFCommViewController ()
 {
 	KonashiUartBaudrate baudrate_;
@@ -68,7 +66,7 @@
 	[Konashi shared].connectedHandler = ^() {
 		[self updateControlState];
 	};
-	[Konashi shared].disconnectedHandler = ^() {
+	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventDisconnectedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
 		BOOL previousState = uartEnableSwitch_.on;
 		[uartEnableSwitch_ setOn:NO animated:YES];
 		if (previousState == YES) {
@@ -82,7 +80,7 @@
 		[self i2cEnableSwitchValueChanged:i2cEnableSwitch_];
 		
 		[self updateControlState];
-	};
+	}];
 	
 	[[Konashi shared] setUartRxCompleteHandler:^(NSData *data) {
 		NSString *string = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];

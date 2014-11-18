@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AMViralSwitch.h"
 
 static NSString *const KNSFDigitalPinValueChangedNotification = @"KNSFDigitalPinValueChangedNotification";
 
@@ -15,6 +16,6 @@ static NSString *const KNSFDigitalPinValueChangedNotification = @"KNSFDigitalPin
 @property (weak, nonatomic) IBOutlet UILabel *pinNumberLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *outputSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIButton *toggleButton;
-@property (weak, nonatomic) IBOutlet UISwitch *pinModeSwitch;
+@property (weak, nonatomic) IBOutlet AMViralSwitch *pinModeSwitch;
 
 @end
