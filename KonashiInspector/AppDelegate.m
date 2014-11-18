@@ -54,6 +54,10 @@
 			image = [[FAKFontAwesome dotCircleOIconWithSize:20] imageWithSize:CGSizeMake(25, 25)];
 		}
 		else if (idx == 3) {
+			// AIO
+			image = [[FAKFontAwesome bullseyeIconWithSize:20] imageWithSize:CGSizeMake(25, 25)];
+		}
+		else if (idx == 4) {
 			// Command
 			image = [[FAKFontAwesome terminalIconWithSize:20] imageWithSize:CGSizeMake(25, 25)];
 		}

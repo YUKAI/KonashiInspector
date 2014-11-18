@@ -25,17 +25,24 @@
 	self.outputSegmentedControl.enabled = NO;
 	self.toggleButton.enabled = NO;
 	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventDisconnectedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+		BOOL previousState = self.pinModeSwitch.on;
 		[self.pinModeSwitch setOn:NO animated:YES];
+		if (previousState == YES) {
+			[self.pinModeSwitch performSelector:@selector(switchChanged:) withObject:self.pinModeSwitch];
+		}
 		self.outputSegmentedControl.enabled = NO;
 		self.toggleButton.enabled = NO;
+		self.pinModeSwitch.enabled = NO;
 	}];
 	
-	__weak typeof(self) bself = self;
+	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventReadyToUseNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+		self.pinModeSwitch.enabled = YES;
+	}];
 	[[NSNotificationCenter defaultCenter] addObserverForName:KNSFDigitalPinValueChangedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
 		KonashiDigitalIOPin pin = (KonashiDigitalIOPin)[note.userInfo[@"pin"] integerValue];
-		if (bself.tag == pin) {
-			KonashiLevel level = [Konashi digitalRead:(KonashiDigitalIOPin)bself.tag];
-			bself.outputSegmentedControl.selectedSegmentIndex = level == KonashiLevelHigh ? 1 : 0;
+		if (self.tag == pin) {
+			KonashiLevel level = [Konashi digitalRead:(KonashiDigitalIOPin)self.tag];
+			self.outputSegmentedControl.selectedSegmentIndex = level == KonashiLevelHigh ? 1 : 0;
 		}
 	}];
 	self.pinModeSwitch.animationElementsOn = @[

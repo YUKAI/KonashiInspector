@@ -16,23 +16,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IKa-a6-00U" customClass="AMViralSwitch">
-                        <rect key="frame" x="44" y="6" width="51" height="31"/>
+                        <rect key="frame" x="43" y="6" width="51" height="31"/>
                         <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <action selector="pinModeSwitchValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="9LX-ks-0TI"/>
                         </connections>
                     </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5J-xx-5jz">
-                        <rect key="frame" x="16" y="11" width="20" height="21"/>
+                        <rect key="frame" x="16" y="11" width="19" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="AdU-Id-qsM"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ycz-dz-mUW">
-                        <rect key="frame" x="101" y="8" width="157" height="29"/>
+                        <rect key="frame" x="100" y="8" width="158" height="29"/>
                         <segments>
                             <segment title="Low"/>
                             <segment title="High"/>
