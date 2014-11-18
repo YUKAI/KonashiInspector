@@ -56,11 +56,7 @@ typedef NS_ENUM(NSUInteger, OTAStatus) {
 				 ];
 	[[NSNotificationCenter defaultCenter] addObserverForName:KONASHI_OTA_FINISH_NOTIFICATION object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
 		currentStatus = OTAStatusFinished;
-#if 1
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが完了しました。" message:@"Konashiは自動的にリセットされます。FWによってはリセットに電源の再供給が必要な場合がありますので、再度Connectを押してリストアップされない場合は試してみてください。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-#else
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Successfully updated!" message:@"Normally, Konashi reboots automatially. Some firmwares need re-powering, so please try when it won't show up in the list displayed when you tap the Connect button again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-#endif
 		[alert show];
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 			[SVProgressHUD dismiss];
@@ -272,11 +268,7 @@ typedef NS_ENUM(NSUInteger, OTAStatus) {
 
 - (void)updateFirmware:(id)sender
 {
-#if 1
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注意" message:@"ファームウェアアップデートの途中でBLE通信が中断されると、Konashiが正常に動作しなくなり、OTAでの復帰が不可能になります。Konashiへの給電が安定していること、iOSデバイスの電池残量が十分であること、距離が1m以内程度で遮蔽がないこと、妨害者が居ないことなどを確認の上、ユーザの責任においてアップデートを実施してください。OTAで復帰不能になった場合は有線で復帰いただけます。詳細はwww.m-pression.comのkoshianサイトをご覧ください。なお、復帰作業はユカイ工学およびマクニカ・テクスターカンパニーでは承っておりません。ご理解のほどよろしくお願いいたします。（アップデートには40秒ほどかかります。また、アップデートの前後でDEVICE_NAMEの後半6桁は保持されます。）" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-#else
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Caution" message:@"Update may take around 40 seconds. When it's interrupted, Konashi won't work properly again and couldn't be recovered via OTA. Before going ahead, check that the power supply to the Konashi is stable, battery remaining of the iOS device is sufficient, the distance between them is less than 1m without any shields, and no interrupter around you. Bricked Konashi will be recovered by wired firmware update using the Wiced Smart SDK. For more info on this topic, please consult the koshian web site on www.m-pression.com." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-#endif
 	[alert show];
 }
 

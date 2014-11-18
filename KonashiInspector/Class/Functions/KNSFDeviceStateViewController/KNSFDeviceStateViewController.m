@@ -62,6 +62,8 @@
 	};
 	[Konashi shared].disconnectedHandler = ^() {
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			nameLabel_.text = @"Not Connected";
+			revisionLabel_.text = @"Not Connected";
 			statusLabel_.text = @"Disconnected";
 			batteryLabel_.text = @"";
 			rssiLabel_.text = @"";

@@ -29,6 +29,9 @@
 								   }];
 	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventReadyToUseNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
 		[JDStatusBarNotification showWithStatus:[NSString stringWithFormat:@"Connecting:%@", [Konashi shared].activePeripheral.peripheral.name] styleName:KonashiReadyToUseStyle];
+		for (NSInteger i = 0; i < 8; i++) {
+			[Konashi pinMode:(KonashiDigitalIOPin)i mode:KonashiPinModeInput];
+		}
 	}];
 	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventDisconnectedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
 		[JDStatusBarNotification dismiss];
@@ -39,13 +42,20 @@
 		UITabBarItem *item = obj;
 		UIImage *image = nil;
 		if (idx == 0) {
-			image = [[FAKFontAwesome infoIconWithSize:21] imageWithSize:CGSizeMake(25, 25)];
+			// Device info
+			image = [[FAKFontAwesome infoIconWithSize:20] imageWithSize:CGSizeMake(25, 25)];
 		}
 		else if (idx == 1) {
-			image = [[FAKFontAwesome wifiIconWithSize:21] imageWithSize:CGSizeMake(25, 25)];
+			// OTA Update
+			image = [[FAKFontAwesome wifiIconWithSize:20] imageWithSize:CGSizeMake(25, 25)];
 		}
-		else if (idx == 2) {
-			image = [[FAKFontAwesome terminalIconWithSize:21] imageWithSize:CGSizeMake(25, 25)];
+		else if	(idx == 2) {
+			// PIO
+			image = [[FAKFontAwesome dotCircleOIconWithSize:20] imageWithSize:CGSizeMake(25, 25)];
+		}
+		else if (idx == 3) {
+			// Command
+			image = [[FAKFontAwesome terminalIconWithSize:20] imageWithSize:CGSizeMake(25, 25)];
 		}
 		[item setImage:image];
 	}];
