@@ -132,8 +132,6 @@
 		[Konashi find];
 		rssiLabel_.text = @"";
 		batteryLabel_.text = @"";
-		nameLabel_.text = @"";
-		revisionLabel_.text = @"";
 	}
 }
 

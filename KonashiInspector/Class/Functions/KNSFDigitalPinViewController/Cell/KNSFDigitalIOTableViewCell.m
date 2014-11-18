@@ -30,6 +30,7 @@
 		if (previousState == YES) {
 			[self.pinModeSwitch performSelector:@selector(switchChanged:) withObject:self.pinModeSwitch];
 		}
+		[self pinModeSwitchValueChanged:self.pinModeSwitch];
 		self.outputSegmentedControl.enabled = NO;
 		self.toggleButton.enabled = NO;
 		self.pinModeSwitch.enabled = NO;

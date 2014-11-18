@@ -693,7 +693,7 @@
             </objects>
             <point key="canvasLocation" x="1641" y="2423"/>
         </scene>
-        <!--Analog Pin View Controller-->
+        <!--Analog IO-->
         <scene sceneID="8Yf-Ur-Or4">
             <objects>
                 <tableViewController id="qIQ-52-miv" customClass="KNSFAnalogPinViewController" sceneMemberID="viewController">
@@ -1566,7 +1566,7 @@
                             <outlet property="delegate" destination="qIQ-52-miv" id="qUl-dT-Qbs"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="oS6-fc-Oak"/>
+                    <navigationItem key="navigationItem" title="Analog IO" id="oS6-fc-Oak"/>
                     <connections>
                         <outletCollection property="outputLabel" destination="W7F-dg-giK" id="n9w-jD-cRF"/>
                         <outletCollection property="outputLabel" destination="aCo-XV-XPg" id="yX2-EX-rEG"/>

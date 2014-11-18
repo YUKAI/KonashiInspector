@@ -15,15 +15,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IKa-a6-00U" customClass="AMViralSwitch">
-                        <rect key="frame" x="43" y="6" width="51" height="31"/>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IKa-a6-00U" customClass="AMViralSwitch">
+                        <rect key="frame" x="43" y="7" width="51" height="31"/>
                         <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <action selector="pinModeSwitchValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="9LX-ks-0TI"/>
                         </connections>
                     </switch>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5J-xx-5jz">
-                        <rect key="frame" x="16" y="11" width="19" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="01" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5J-xx-5jz">
+                        <rect key="frame" x="16" y="12" width="19" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="AdU-Id-qsM"/>
                         </constraints>
@@ -31,8 +31,8 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ycz-dz-mUW">
-                        <rect key="frame" x="100" y="8" width="158" height="29"/>
+                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ycz-dz-mUW">
+                        <rect key="frame" x="100" y="9" width="158" height="29"/>
                         <segments>
                             <segment title="Low"/>
                             <segment title="High"/>
@@ -42,9 +42,9 @@
                         </connections>
                     </segmentedControl>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ren-nM-KbO">
-                        <rect key="frame" x="266" y="7" width="46" height="30"/>
+                        <rect key="frame" x="266" y="-1" width="46" height="45"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="DYT-v0-K6h"/>
+                            <constraint firstAttribute="height" constant="45" id="DYT-v0-K6h"/>
                             <constraint firstAttribute="width" constant="46" id="qor-e4-jgw"/>
                         </constraints>
                         <state key="normal" title="Toggle">
@@ -74,7 +74,7 @@
                 <outlet property="pinNumberLabel" destination="V5J-xx-5jz" id="Zby-af-fq0"/>
                 <outlet property="toggleButton" destination="ren-nM-KbO" id="kCu-kP-JrE"/>
             </connections>
-            <point key="canvasLocation" x="339" y="415"/>
+            <point key="canvasLocation" x="339" y="414"/>
         </tableViewCell>
     </objects>
 </document>

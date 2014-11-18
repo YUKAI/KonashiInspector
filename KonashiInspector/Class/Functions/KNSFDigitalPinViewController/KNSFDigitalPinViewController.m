@@ -42,7 +42,7 @@
 	static NSString *CellIdentifier = @"Cell";
 	KNSFDigitalIOTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 	cell.tag = indexPath.row;
-	cell.pinNumberLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
+	cell.pinNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
 	
 	return cell;
 }
