@@ -1,6 +1,6 @@
 # KonashiInspector
 
-All new inspector for Konashi platform.
+All new inspector app for Konashi platform.
 
 ![](https://raw.githubusercontent.com/0x0c/KonashiInspector/master/Images/1.PNG)
 ![](https://raw.githubusercontent.com/0x0c/KonashiInspector/master/Images/2.PNG)
