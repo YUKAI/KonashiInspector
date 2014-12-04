@@ -32,6 +32,7 @@
 	__weak IBOutlet UILabel *i2cLabel_;
 	
 	NSArray *baudrateList_;
+	BOOL visible_;
 }
 
 @end
@@ -86,17 +87,20 @@
 		NSString *string = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
 		NSString *text = [uartReceivedDataTextView_.text stringByAppendingString:string];
 		uartReceivedDataTextView_.text = text;
-		NSLog(@"uart RX complete:%@(%@:length = %ld)", string, [data description], (unsigned long)data.length);
+//		NSLog(@"uart RX complete:%@(%@:length = %ld)", string, [data description], (unsigned long)data.length);
+		NSLog(@"%@", text);
 	}];
 	[[Konashi shared] setI2cReadCompleteHandler:^(NSData *data) {
 		NSLog(@"i2c read complete:(%@:length = %ld)", [data description], (unsigned long)data.length);
 		unsigned char d[[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength]];
-		[Konashi i2cRead:(int)[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength] data:d];
+		[[Konashi i2cReadData] getBytes:d];
 		[NSThread sleepForTimeInterval:0.01];
 		[Konashi i2cStopCondition];
+		NSMutableString *string = [NSMutableString new];
 		for (NSInteger i = 0; i < [[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength]; i++) {
-			i2cReceivedDataTextView_.text = [i2cReceivedDataTextView_.text stringByAppendingString:[NSString stringWithFormat:@"%d", d[i]]];
+			[string appendString:[NSString stringWithFormat:@"%d", d[i]]];
 		}
+		[i2cReceivedDataTextView_.text stringByAppendingString:string];
 	}];
 }
 
@@ -146,7 +150,20 @@
 												   ];
 	});
 }
-#pragma mark - 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	visible_ = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+	visible_ = NO;
+}
+
+#pragma mark -
 #pragma mark - UART
 
 - (IBAction)uartSendString:(id)sender
@@ -178,10 +195,10 @@
 {
 	UISwitch *sw = sender;
 	if (sw.on) {
-		[Konashi uartMode:KonashiUartModeEnable];
+		[Konashi uartMode:KonashiUartModeEnable baudrate:baudrate_];
 	}
 	else {
-		[Konashi uartMode:KonashiUartModeDisable];
+		[Konashi uartMode:KonashiUartModeDisable baudrate:baudrate_];
 	}
 	
 	uartBaudrateChangeButton_.enabled = !sw.on;
@@ -291,7 +308,6 @@
 	if (buttonIndex > 0) {
 		baudrate_ = (KonashiUartBaudrate)([baudrateList_[buttonIndex - 1] integerValue] / 240);
 		uartBaudrateLabel_.text = baudrateList_[buttonIndex - 1];
-		[Konashi uartBaudrate:baudrate_];
 		NSLog(@"set baudrate:%d", baudrate_);
 	}
 }
