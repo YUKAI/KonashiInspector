@@ -151,6 +151,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		E956148A1AB97E4500357FBE /* KNSFPwmViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = KNSFPwmViewController;
+			sourceTree = "<group>";
+		};
 		E9DC64BA1A1BD262005FCC22 /* KNSFAnalogPinViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +234,7 @@
 		E9EE762A1A19CFFC004C00DB /* Functions */ = {
 			isa = PBXGroup;
 			children = (
+				E956148A1AB97E4500357FBE /* KNSFPwmViewController */,
 				E9DC64BF1A1BD26B005FCC22 /* KNSFDigitalPinViewController */,
 				E9DC64BA1A1BD262005FCC22 /* KNSFAnalogPinViewController */,
 				E9EE762B1A19CFFC004C00DB /* KNSFCommViewController */,

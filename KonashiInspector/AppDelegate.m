@@ -28,7 +28,7 @@
 									   return style;
 								   }];
 	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventReadyToUseNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-		[JDStatusBarNotification showWithStatus:[NSString stringWithFormat:@"Connecting:%@", [Konashi shared].activePeripheral.peripheral.name] styleName:KonashiReadyToUseStyle];
+		[JDStatusBarNotification showWithStatus:[NSString stringWithFormat:@"Connected:%@", [Konashi shared].activePeripheral.peripheral.name] styleName:KonashiReadyToUseStyle];
 		for (NSInteger i = 0; i < 8; i++) {
 			[Konashi pinMode:(KonashiDigitalIOPin)i mode:KonashiPinModeInput];
 		}
