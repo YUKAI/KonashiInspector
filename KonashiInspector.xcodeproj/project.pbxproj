@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2CA81301DD6CFD7A721D0D68 /* libPods-KonashiInspector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEB1EB00032FE12C557631D /* libPods-KonashiInspector.a */; };
+		E956148D1AB980B200357FBE /* KNSFPwmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E956148C1AB980B200357FBE /* KNSFPwmViewController.m */; };
 		E967F3E31A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E967F3E11A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.m */; };
 		E967F3E41A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E967F3E21A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.xib */; };
 		E967F3E81A1BEE570018EB2D /* KNSFAnalogPinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E967F3E71A1BEE570018EB2D /* KNSFAnalogPinViewController.m */; };
@@ -53,6 +54,8 @@
 		DDCF45E7559DFAF904E2C98B /* Pods-KonashiInspector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonashiInspector.release.xcconfig"; path = "Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector.release.xcconfig"; sourceTree = "<group>"; };
 		E92026DB1A1602F8008E0924 /* KonashiInspector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KonashiInspector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92026F41A1602F8008E0924 /* KonashiInspectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KonashiInspectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E956148B1AB980B200357FBE /* KNSFPwmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNSFPwmViewController.h; sourceTree = "<group>"; };
+		E956148C1AB980B200357FBE /* KNSFPwmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNSFPwmViewController.m; sourceTree = "<group>"; };
 		E967F3E01A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNSFDigitalIOTableViewCell.h; sourceTree = "<group>"; };
 		E967F3E11A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNSFDigitalIOTableViewCell.m; sourceTree = "<group>"; };
 		E967F3E21A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KNSFDigitalIOTableViewCell.xib; sourceTree = "<group>"; };
@@ -154,6 +157,8 @@
 		E956148A1AB97E4500357FBE /* KNSFPwmViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E956148B1AB980B200357FBE /* KNSFPwmViewController.h */,
+				E956148C1AB980B200357FBE /* KNSFPwmViewController.m */,
 			);
 			path = KNSFPwmViewController;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9EE76501A19CFFC004C00DB /* KNSFDeviceStateViewController.m in Sources */,
+				E956148D1AB980B200357FBE /* KNSFPwmViewController.m in Sources */,
 				E967F3E31A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.m in Sources */,
 				E9EE764E1A19CFFC004C00DB /* Konashi+OTA.m in Sources */,
 				E9EE76521A19CFFC004C00DB /* OTAUpdateViewController.m in Sources */,

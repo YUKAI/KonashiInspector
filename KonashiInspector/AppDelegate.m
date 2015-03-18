@@ -61,6 +61,11 @@
 			// Command
 			image = [[FAKFontAwesome terminalIconWithSize:20] imageWithSize:CGSizeMake(25, 25)];
 		}
+		else if (idx == 5) {
+			// Pwm
+			image = [[FAKFontAwesome circleIconWithSize:20] imageWithSize:CGSizeMake(25, 25)];
+		}
+		
 		[item setImage:image];
 	}];
 	
