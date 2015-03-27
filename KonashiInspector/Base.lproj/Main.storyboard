@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="O46-aX-IjP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="O46-aX-IjP">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
@@ -274,7 +274,7 @@
             </objects>
             <point key="canvasLocation" x="1641" y="978"/>
         </scene>
-        <!--Command-->
+        <!--Comm-->
         <scene sceneID="0QK-kT-8M9">
             <objects>
                 <viewController id="PUT-RR-9wO" customClass="KNSFCommViewController" sceneMemberID="viewController">
@@ -543,7 +543,7 @@
                             <constraint firstItem="EfJ-UB-dUv" firstAttribute="top" secondItem="34b-Q6-bRd" secondAttribute="bottom" constant="5" id="wOc-w0-EuG"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Command" id="7ah-Z2-XxN"/>
+                    <tabBarItem key="tabBarItem" title="Comm" id="7ah-Z2-XxN"/>
                     <connections>
                         <outlet property="i2cEnableSwitch_" destination="TXk-yq-VdK" id="A1P-hi-yDU"/>
                         <outlet property="i2cLabel_" destination="LyF-8N-qhd" id="uMW-df-bKO"/>
@@ -1690,7 +1690,6 @@
         <!--PWM-->
         <scene sceneID="Jwr-9Z-gcD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vlN-aE-hf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="keO-De-f5a" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="PWM" id="YwR-Ow-LF9"/>
                     <toolbarItems/>
@@ -1703,6 +1702,7 @@
                         <segue destination="mr0-Nz-ktQ" kind="relationship" relationship="rootViewController" id="yqj-fN-oey"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vlN-aE-hf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1640" y="3123"/>
         </scene>

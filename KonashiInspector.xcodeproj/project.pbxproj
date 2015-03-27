@@ -38,22 +38,11 @@
 		E9F59A4F1A19D07700FABDCC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F59A4E1A19D07700FABDCC /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		E92026F51A1602F8008E0924 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E92026D31A1602F8008E0924 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E92026DA1A1602F8008E0924;
-			remoteInfo = KonashiFirmwareUpdater;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		6DEB1EB00032FE12C557631D /* libPods-KonashiInspector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KonashiInspector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96AA6CA2C327C22226084842 /* Pods-KonashiInspector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonashiInspector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector.debug.xcconfig"; sourceTree = "<group>"; };
 		DDCF45E7559DFAF904E2C98B /* Pods-KonashiInspector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonashiInspector.release.xcconfig"; path = "Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector.release.xcconfig"; sourceTree = "<group>"; };
 		E92026DB1A1602F8008E0924 /* KonashiInspector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KonashiInspector.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E92026F41A1602F8008E0924 /* KonashiInspectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KonashiInspectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E956148B1AB980B200357FBE /* KNSFPwmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNSFPwmViewController.h; sourceTree = "<group>"; };
 		E956148C1AB980B200357FBE /* KNSFPwmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNSFPwmViewController.m; sourceTree = "<group>"; };
 		E967F3E01A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNSFDigitalIOTableViewCell.h; sourceTree = "<group>"; };
@@ -106,13 +95,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E92026F11A1602F8008E0924 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -149,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				E92026DB1A1602F8008E0924 /* KonashiInspector.app */,
-				E92026F41A1602F8008E0924 /* KonashiInspectorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -349,24 +330,6 @@
 			productReference = E92026DB1A1602F8008E0924 /* KonashiInspector.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E92026F31A1602F8008E0924 /* KonashiInspectorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E92027011A1602F8008E0924 /* Build configuration list for PBXNativeTarget "KonashiInspectorTests" */;
-			buildPhases = (
-				E92026F01A1602F8008E0924 /* Sources */,
-				E92026F11A1602F8008E0924 /* Frameworks */,
-				E92026F21A1602F8008E0924 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E92026F61A1602F8008E0924 /* PBXTargetDependency */,
-			);
-			name = KonashiInspectorTests;
-			productName = KonashiFirmwareUpdaterTests;
-			productReference = E92026F41A1602F8008E0924 /* KonashiInspectorTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -378,10 +341,6 @@
 				TargetAttributes = {
 					E92026DA1A1602F8008E0924 = {
 						CreatedOnToolsVersion = 6.1;
-					};
-					E92026F31A1602F8008E0924 = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = E92026DA1A1602F8008E0924;
 					};
 				};
 			};
@@ -399,7 +358,6 @@
 			projectRoot = "";
 			targets = (
 				E92026DA1A1602F8008E0924 /* KonashiInspector */,
-				E92026F31A1602F8008E0924 /* KonashiInspectorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -425,13 +383,6 @@
 				E9EE765B1A19CFFC004C00DB /* Icon-76.png in Resources */,
 				E9EE764C1A19CFFC004C00DB /* LaunchScreen.xib in Resources */,
 				E9EE764D1A19CFFC004C00DB /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E92026F21A1602F8008E0924 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,22 +440,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E92026F01A1602F8008E0924 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E92026F61A1602F8008E0924 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E92026DA1A1602F8008E0924 /* KonashiInspector */;
-			targetProxy = E92026F51A1602F8008E0924 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E9EE76211A19CFFC004C00DB /* LaunchScreen.xib */ = {
@@ -634,40 +570,6 @@
 			};
 			name = Release;
 		};
-		E92027021A1602F8008E0924 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = KonashiFirmwareUpdaterTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = KonashiInspectorTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KonashiFirmwareUpdater.app/KonashiFirmwareUpdater";
-			};
-			name = Debug;
-		};
-		E92027031A1602F8008E0924 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = KonashiFirmwareUpdaterTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = KonashiInspectorTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KonashiFirmwareUpdater.app/KonashiFirmwareUpdater";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -685,15 +587,6 @@
 			buildConfigurations = (
 				E92026FF1A1602F8008E0924 /* Debug */,
 				E92027001A1602F8008E0924 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E92027011A1602F8008E0924 /* Build configuration list for PBXNativeTarget "KonashiInspectorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E92027021A1602F8008E0924 /* Debug */,
-				E92027031A1602F8008E0924 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

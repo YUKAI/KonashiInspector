@@ -42,7 +42,7 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	self.title = @"Command";
+	self.title = @"Comm";
 	baudrateList_ = @[@"2400", @"9600", @"19200", @"38400", @"57600", @"76800", @"115200"];
 	uartBaudrateLabel_.text = @"9600";
 	baudrate_ = KonashiUartBaudrateRate9K6;
