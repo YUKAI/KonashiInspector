@@ -13,7 +13,3 @@ pod 'JDStatusBarNotification'
 pod 'M2DWebViewController'
 
 end
-
-target 'KonashiInspectorTests' do
-
-end
