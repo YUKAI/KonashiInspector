@@ -100,7 +100,7 @@
 		for (NSInteger i = 0; i < [[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength]; i++) {
 			[string appendString:[NSString stringWithFormat:@"%d", d[i]]];
 		}
-		[i2cReceivedDataTextView_.text stringByAppendingString:string];
+		i2cReceivedDataTextView_.text = [i2cReceivedDataTextView_.text stringByAppendingString:string];
 	}];
 }
 
