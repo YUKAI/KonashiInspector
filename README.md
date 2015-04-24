@@ -2,6 +2,8 @@
 
 All new inspector app for Konashi platform.
 
+使い方は[こちら](https://raw.githubusercontent.com/YUKAI/KonashiInspector/master/Document/README.pdf)（PDF直リンク）
+
 ![](https://raw.githubusercontent.com/YUKAI/KonashiInspector/master/Images/1.PNG)
 ![](https://raw.githubusercontent.com/YUKAI/KonashiInspector/master/Images/2.PNG)
 ![](https://raw.githubusercontent.com/YUKAI/KonashiInspector/master/Images/3.PNG)
