@@ -1,0 +1,39 @@
+PODS:
+  - AMViralSwitch (0.2.5)
+  - FontAwesomeKit (2.1.8):
+    - FontAwesomeKit/Core (= 2.1.8)
+    - FontAwesomeKit/FontAwesome (= 2.1.8)
+    - FontAwesomeKit/FoundationIcons (= 2.1.8)
+    - FontAwesomeKit/IonIcons (= 2.1.8)
+    - FontAwesomeKit/Zocial (= 2.1.8)
+  - FontAwesomeKit/Core (2.1.8)
+  - FontAwesomeKit/FontAwesome (2.1.8):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/FoundationIcons (2.1.8):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/IonIcons (2.1.8):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/Zocial (2.1.8):
+    - FontAwesomeKit/Core
+  - JDStatusBarNotification (1.5.1)
+  - konashi-ios-sdk (3.0.1)
+  - M2DWebViewController (0.1.11)
+  - SVProgressHUD (1.1.3)
+
+DEPENDENCIES:
+  - AMViralSwitch
+  - FontAwesomeKit (~> 2.1.0)
+  - JDStatusBarNotification
+  - konashi-ios-sdk
+  - M2DWebViewController
+  - SVProgressHUD
+
+SPEC CHECKSUMS:
+  AMViralSwitch: 014410afad02f7a5a69cb67f41ed0ed5d9d7662b
+  FontAwesomeKit: 64759fb28b5d2e74a1bd81553d7c11ca10e32179
+  JDStatusBarNotification: 83c7d7a4e1e0d09528bcb98827fe4fc99dbdd6aa
+  konashi-ios-sdk: 916f83d307351083e1e4328897a81beca32e1b54
+  M2DWebViewController: ccdbbe41b792a4111672b8ad7e85b04500e6df30
+  SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
+
+COCOAPODS: 0.36.4
