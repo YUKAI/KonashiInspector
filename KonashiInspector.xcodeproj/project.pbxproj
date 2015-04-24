@@ -551,6 +551,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = KonashiInspector;
+				PROVISIONING_PROFILE = "c3b7ee48-4107-4f18-bc8c-5afdff231921";
 			};
 			name = Debug;
 		};
