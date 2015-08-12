@@ -107,6 +107,7 @@
 {
 	[super viewWillAppear:animated];
 	[self updateControlState];
+	[self.navigationController setToolbarHidden:YES animated:YES];
 }
 
 #pragma mark - 

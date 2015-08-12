@@ -71,12 +71,18 @@
 		BOOL previousState = uartEnableSwitch_.on;
 		[uartEnableSwitch_ setOn:NO animated:YES];
 		if (previousState == YES) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 			[uartEnableSwitch_ performSelector:@selector(switchChanged:) withObject:uartEnableSwitch_];
+#pragma clang diagnostic pop
 		}
 		previousState = i2cEnableSwitch_.on;
 		[i2cEnableSwitch_ setOn:NO animated:YES];
 		if (previousState == YES) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 			[i2cEnableSwitch_ performSelector:@selector(switchChanged:) withObject:i2cEnableSwitch_];
+#pragma clang diagnostic pop
 		}
 		[self i2cEnableSwitchValueChanged:i2cEnableSwitch_];
 		

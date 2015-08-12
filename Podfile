@@ -11,5 +11,6 @@ pod 'FontAwesomeKit', '~> 2.1.0'
 pod 'AMViralSwitch'
 pod 'JDStatusBarNotification'
 pod 'M2DWebViewController'
+pod 'SWTableViewCell'
 
 end
