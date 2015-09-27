@@ -668,7 +668,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="5TF-ET-4J2"/>
                                                         <constraint firstAttribute="width" constant="39" id="KcO-bl-VDg"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -709,7 +709,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="jnc-OD-kIc"/>
                                                         <constraint firstAttribute="width" constant="11" id="ntU-vn-6rQ"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -731,7 +731,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="9g7-A1-bb3"/>
                                                         <constraint firstAttribute="width" constant="70" id="AA0-uF-pEv"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -812,7 +812,7 @@
                                                         <constraint firstAttribute="width" constant="39" id="MvY-3L-Xnm"/>
                                                         <constraint firstAttribute="height" constant="21" id="uFt-wI-YUn"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -834,7 +834,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="Pli-yU-ZYh"/>
                                                         <constraint firstAttribute="width" constant="11" id="Vin-Xx-0gC"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -856,7 +856,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="3SH-Ol-y1D"/>
                                                         <constraint firstAttribute="width" constant="70" id="5Kq-Du-kFf"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -952,7 +952,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AIO2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tfz-IB-gsd">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -962,7 +962,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="dmp-v1-vwo"/>
                                                         <constraint firstAttribute="width" constant="11" id="mUf-en-9pG"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -984,7 +984,7 @@
                                                         <constraint firstAttribute="width" constant="70" id="D2k-47-yXn"/>
                                                         <constraint firstAttribute="height" constant="21" id="DXO-EY-6aO"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -1088,7 +1088,7 @@
                                                         <constraint firstAttribute="width" constant="39" id="OH2-BS-gfz"/>
                                                         <constraint firstAttribute="height" constant="21" id="Ssb-0E-7ln"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -1135,7 +1135,7 @@
                                                         <constraint firstAttribute="width" constant="11" id="D0j-Rj-Xkz"/>
                                                         <constraint firstAttribute="height" constant="21" id="w2V-71-hXs"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -1156,7 +1156,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="lpo-St-fRc"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -1235,7 +1235,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="GfJ-g9-ffR"/>
                                                         <constraint firstAttribute="width" constant="39" id="qUo-6A-H7n"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -1282,7 +1282,7 @@
                                                         <constraint firstAttribute="width" constant="11" id="BLU-M0-ik6"/>
                                                         <constraint firstAttribute="height" constant="21" id="qbH-BY-cbQ"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -1303,7 +1303,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="ZPm-ob-zLG"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -1382,7 +1382,7 @@
                                                         <constraint firstAttribute="width" constant="39" id="1TX-Uz-z68"/>
                                                         <constraint firstAttribute="height" constant="21" id="czi-OH-mTY"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -1429,7 +1429,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="cfB-5m-AXw"/>
                                                         <constraint firstAttribute="width" constant="11" id="eLU-eG-i5L"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -1450,7 +1450,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="vvI-g1-byb"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
