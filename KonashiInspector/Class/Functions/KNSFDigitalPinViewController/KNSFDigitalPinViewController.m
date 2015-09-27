@@ -89,10 +89,10 @@
 	switch (index) {
 		case 0:
 			if (self.pullupState & cell.tag) {
-				[Konashi pinPullup:cell.tag mode:KonashiPinModeNoPulls];
+				[Konashi pinPullup:(KonashiDigitalIOPin)cell.tag mode:KonashiPinModeNoPulls];
 			}
 			else {
-				[Konashi pinPullup:cell.tag mode:KonashiPinModePullup];
+				[Konashi pinPullup:(KonashiDigitalIOPin)cell.tag mode:KonashiPinModePullup];
 			}
 			self.pullupState ^= cell.tag;
 

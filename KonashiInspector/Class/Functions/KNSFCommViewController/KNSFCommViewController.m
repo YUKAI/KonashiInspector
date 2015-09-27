@@ -99,7 +99,7 @@
 	[[Konashi shared] setI2cReadCompleteHandler:^(NSData *data) {
 		NSLog(@"i2c read complete:(%@:length = %ld)", [data description], (unsigned long)data.length);
 		unsigned char d[[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength]];
-		[[Konashi i2cReadData] getBytes:d];
+		[[Konashi i2cReadData] getBytes:d length:1];
 		[NSThread sleepForTimeInterval:0.01];
 		[Konashi i2cStopCondition];
 		NSMutableString *string = [NSMutableString new];

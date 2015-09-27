@@ -1,5 +1,5 @@
 PODS:
-  - AMViralSwitch (0.3.1)
+  - AMViralSwitch (0.3.4)
   - FontAwesomeKit (2.1.8):
     - FontAwesomeKit/Core (= 2.1.8)
     - FontAwesomeKit/FontAwesome (= 2.1.8)
@@ -16,7 +16,7 @@ PODS:
   - FontAwesomeKit/Zocial (2.1.8):
     - FontAwesomeKit/Core
   - JDStatusBarNotification (1.5.2)
-  - konashi-ios-sdk (4.0.0)
+  - konashi-ios-sdk (4.0.1)
   - M2DWebViewController (0.1.11)
   - SVProgressHUD (1.1.3)
   - SWTableViewCell (0.3.7)
@@ -31,10 +31,10 @@ DEPENDENCIES:
   - SWTableViewCell
 
 SPEC CHECKSUMS:
-  AMViralSwitch: 9f12c443d281a8077c8b2b864f0093c429157c67
+  AMViralSwitch: d4e240a37704bacca8e72098ff035ac049967a0a
   FontAwesomeKit: 64759fb28b5d2e74a1bd81553d7c11ca10e32179
   JDStatusBarNotification: a36d09ccbb047217572b074a61e7ca10dddc5f0a
-  konashi-ios-sdk: 30cceda8d8c42fc03361775b402fe845da324780
+  konashi-ios-sdk: 2a11146c5fd2fecb39dd0531201e4b836dea8f11
   M2DWebViewController: ccdbbe41b792a4111672b8ad7e85b04500e6df30
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579

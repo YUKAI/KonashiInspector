@@ -554,7 +554,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KonashiInspector/KonashiInspector-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/KonashiInspector/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.akira.matsuda.$(PRODUCT_NAME:rfc1034identifier)";
@@ -573,7 +573,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KonashiInspector/KonashiInspector-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/KonashiInspector/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.akira.matsuda.$(PRODUCT_NAME:rfc1034identifier)";
