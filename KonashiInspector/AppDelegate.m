@@ -28,7 +28,9 @@
 		return style;
 	}];
 	[[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventReadyToUseNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-		[JDStatusBarNotification showWithStatus:[NSString stringWithFormat:@"Ready:%@", [Konashi shared].activePeripheral.peripheral.name] styleName:KonashiReadyToUseStyle];
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			[JDStatusBarNotification showWithStatus:[NSString stringWithFormat:@"Ready : %@", [Konashi shared].activePeripheral.peripheral.name] styleName:KonashiReadyToUseStyle];
+		});
 		for (NSInteger i = 0; i < 8; i++) {
 			[Konashi pinMode:(KonashiDigitalIOPin)i mode:KonashiPinModeInput];
 		}

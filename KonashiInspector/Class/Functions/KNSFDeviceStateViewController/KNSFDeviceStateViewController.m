@@ -140,7 +140,6 @@
 {
 	if ([Konashi isConnected]) {
 		nameLabel_.text = [Konashi shared].activePeripheral.peripheral.name;
-		statusLabel_.text = @"Connected";
 		connectButton_.backgroundColor = DisconnectBackgroundColor;
 		[connectButton_ setTitle:@"Disconnect" forState:UIControlStateNormal];
 	}
