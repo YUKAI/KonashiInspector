@@ -74,11 +74,13 @@
 
 #pragma mark - UITableViewDelegate
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	return UITableViewCellEditingStyleDelete;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -88,20 +90,14 @@
 {
 	switch (index) {
 		case 0:
-			if (self.pullupState & cell.tag) {
-				[Konashi pinPullup:(KonashiDigitalIOPin)cell.tag mode:KonashiPinModeNoPulls];
-			}
-			else {
-				[Konashi pinPullup:(KonashiDigitalIOPin)cell.tag mode:KonashiPinModePullup];
-			}
-			self.pullupState ^= cell.tag;
-
+			self.pullupState ^= (1 << cell.tag);
+			[Konashi pinPullupAll:self.pullupState];
 			[UIView animateWithDuration:0.5 animations:^{
-				((KNSFDigitalIOTableViewCell *)cell).pullupIndicatorLabel.alpha = self.pullupState & cell.tag;
+				((KNSFDigitalIOTableViewCell *)cell).pullupIndicatorLabel.alpha = self.pullupState & (1 << cell.tag);
 			} completion:^(BOOL finished) {
 				UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-				button.backgroundColor = self.pullupState & cell.tag ? [UIColor colorWithRed:1.0f green:0.1491f blue:0.0f alpha:1.0] : [UIColor colorWithRed:0.0f green:0.5695f blue:1.0f alpha:1.0];
-				[button setTitle:self.pullupState & cell.tag ? @"NoPulls" : @"Pullup" forState:UIControlStateNormal];
+				button.backgroundColor = self.pullupState & (1 << cell.tag) ? [UIColor colorWithRed:1.0f green:0.1491f blue:0.0f alpha:1.0] : [UIColor colorWithRed:0.0f green:0.5695f blue:1.0f alpha:1.0];
+				[button setTitle:self.pullupState & (1 << cell.tag) ? @"NoPulls" : @"Pullup" forState:UIControlStateNormal];
 				[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 				[button.titleLabel setAdjustsFontSizeToFitWidth:YES];
 				cell.rightUtilityButtons = @[button];
