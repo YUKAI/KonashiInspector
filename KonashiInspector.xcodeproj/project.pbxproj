@@ -323,6 +323,7 @@
 				E92026D81A1602F8008E0924 /* Frameworks */,
 				E92026D91A1602F8008E0924 /* Resources */,
 				83F08DA58D43E71458365343 /* Copy Pods Resources */,
+				0A9B0E89FBE3D86BC48C47CE /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -344,6 +345,7 @@
 				TargetAttributes = {
 					E92026DA1A1602F8008E0924 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 55536VBLEE;
 					};
 				};
 			};
@@ -393,6 +395,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0A9B0E89FBE3D86BC48C47CE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		83F08DA58D43E71458365343 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -547,6 +564,8 @@
 			baseConfigurationReference = 96AA6CA2C327C22226084842 /* Pods-KonashiInspector.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KonashiInspector/KonashiInspector-Prefix.pch";
@@ -554,8 +573,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ux-xu.konashi.KonashiInspector";
 				PRODUCT_NAME = KonashiInspector;
-				PROVISIONING_PROFILE = "c3b7ee48-4107-4f18-bc8c-5afdff231921";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -564,6 +584,8 @@
 			baseConfigurationReference = DDCF45E7559DFAF904E2C98B /* Pods-KonashiInspector.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KonashiInspector/KonashiInspector-Prefix.pch";
@@ -571,7 +593,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ux-xu.konashi.KonashiInspector";
 				PRODUCT_NAME = KonashiInspector;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
