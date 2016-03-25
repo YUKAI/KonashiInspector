@@ -91,7 +91,7 @@
 	switch (index) {
 		case 0:
 			self.pullupState ^= (1 << cell.tag);
-			[Konashi pinPullupAll:self.pullupState];
+			[Konashi pinPullupAll:(int)self.pullupState];
 			[UIView animateWithDuration:0.5 animations:^{
 				((KNSFDigitalIOTableViewCell *)cell).pullupIndicatorLabel.alpha = self.pullupState & (1 << cell.tag);
 			} completion:^(BOOL finished) {
