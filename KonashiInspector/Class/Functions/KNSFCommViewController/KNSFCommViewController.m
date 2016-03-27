@@ -71,12 +71,18 @@
 		BOOL previousState = uartEnableSwitch_.on;
 		[uartEnableSwitch_ setOn:NO animated:YES];
 		if (previousState == YES) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 			[uartEnableSwitch_ performSelector:@selector(switchChanged:) withObject:uartEnableSwitch_];
+#pragma clang diagnostic pop
 		}
 		previousState = i2cEnableSwitch_.on;
 		[i2cEnableSwitch_ setOn:NO animated:YES];
 		if (previousState == YES) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 			[i2cEnableSwitch_ performSelector:@selector(switchChanged:) withObject:i2cEnableSwitch_];
+#pragma clang diagnostic pop
 		}
 		[self i2cEnableSwitchValueChanged:i2cEnableSwitch_];
 		
@@ -93,7 +99,7 @@
 	[[Konashi shared] setI2cReadCompleteHandler:^(NSData *data) {
 		NSLog(@"i2c read complete:(%@:length = %ld)", [data description], (unsigned long)data.length);
 		unsigned char d[[[[Konashi shared].activePeripheral.impl class] i2cDataMaxLength]];
-		[[Konashi i2cReadData] getBytes:d];
+		[[Konashi i2cReadData] getBytes:d length:1];
 		[NSThread sleepForTimeInterval:0.01];
 		[Konashi i2cStopCondition];
 		NSMutableString *string = [NSMutableString new];

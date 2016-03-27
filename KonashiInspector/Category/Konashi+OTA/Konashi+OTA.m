@@ -10,6 +10,8 @@
 #import <zlib.h>
 #import "CBService+Konashi.h"
 #import <objc/runtime.h>
+#import "KNSKonashiPeripheralImpl.h"
+#import "KNSKoshianPeripheralImpl.h"
 
 @implementation KNSPeripheralBaseImpl (OTA)
 

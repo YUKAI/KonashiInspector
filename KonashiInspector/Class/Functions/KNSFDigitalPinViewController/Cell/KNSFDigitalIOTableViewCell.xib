@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -15,24 +15,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IKa-a6-00U" customClass="AMViralSwitch">
-                        <rect key="frame" x="43" y="7" width="51" height="31"/>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IKa-a6-00U" customClass="AMViralSwitch">
+                        <rect key="frame" x="50" y="6" width="51" height="31"/>
                         <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <action selector="pinModeSwitchValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="9LX-ks-0TI"/>
                         </connections>
                     </switch>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="01" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5J-xx-5jz">
-                        <rect key="frame" x="16" y="12" width="19" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5J-xx-5jz">
+                        <rect key="frame" x="23" y="11" width="19" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="AdU-Id-qsM"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ycz-dz-mUW">
-                        <rect key="frame" x="100" y="9" width="158" height="29"/>
+                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ycz-dz-mUW">
+                        <rect key="frame" x="107" y="8" width="151" height="29"/>
                         <segments>
                             <segment title="Low"/>
                             <segment title="High"/>
@@ -47,6 +47,7 @@
                             <constraint firstAttribute="height" constant="45" id="DYT-v0-K6h"/>
                             <constraint firstAttribute="width" constant="46" id="qor-e4-jgw"/>
                         </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <state key="normal" title="Toggle">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -55,11 +56,23 @@
                             <action selector="toggleButtonTouchUpInside:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vdD-P2-seI"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgm-fi-Wgm">
+                        <rect key="frame" x="8" y="11" width="12" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="12" id="fL3-g1-4jI"/>
+                            <constraint firstAttribute="height" constant="21" id="ocA-Ho-7nE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="V5J-xx-5jz" firstAttribute="leading" secondItem="Lgm-fi-Wgm" secondAttribute="trailing" constant="3" id="4ts-0M-3Uv"/>
                     <constraint firstItem="ren-nM-KbO" firstAttribute="leading" secondItem="Ycz-dz-mUW" secondAttribute="trailing" constant="8" id="AXz-ci-u77"/>
+                    <constraint firstAttribute="centerY" secondItem="Lgm-fi-Wgm" secondAttribute="centerY" id="Ijb-kd-Xam"/>
                     <constraint firstItem="ren-nM-KbO" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="P6K-S3-BYZ"/>
-                    <constraint firstItem="V5J-xx-5jz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="aBh-LJ-Sqe"/>
+                    <constraint firstItem="Lgm-fi-Wgm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="S4E-Yi-GVx"/>
                     <constraint firstItem="IKa-a6-00U" firstAttribute="leading" secondItem="V5J-xx-5jz" secondAttribute="trailing" constant="8" id="bw6-R7-y4c"/>
                     <constraint firstAttribute="centerY" secondItem="V5J-xx-5jz" secondAttribute="centerY" id="c05-xL-3mT"/>
                     <constraint firstItem="Ycz-dz-mUW" firstAttribute="leading" secondItem="IKa-a6-00U" secondAttribute="trailing" constant="8" id="cB8-Xn-yQO"/>
@@ -72,6 +85,7 @@
                 <outlet property="outputSegmentedControl" destination="Ycz-dz-mUW" id="DH8-8H-un2"/>
                 <outlet property="pinModeSwitch" destination="IKa-a6-00U" id="S3s-AA-CBp"/>
                 <outlet property="pinNumberLabel" destination="V5J-xx-5jz" id="Zby-af-fq0"/>
+                <outlet property="pullupIndicatorLabel" destination="Lgm-fi-Wgm" id="FjE-i4-V53"/>
                 <outlet property="toggleButton" destination="ren-nM-KbO" id="kCu-kP-JrE"/>
             </connections>
             <point key="canvasLocation" x="339" y="414"/>

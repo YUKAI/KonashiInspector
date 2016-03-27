@@ -28,7 +28,10 @@
 		BOOL previousState = self.pinModeSwitch.on;
 		[self.pinModeSwitch setOn:NO animated:YES];
 		if (previousState == YES) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 			[self.pinModeSwitch performSelector:@selector(switchChanged:) withObject:self.pinModeSwitch];
+#pragma clang diagnostic pop
 		}
 		[self pinModeSwitchValueChanged:self.pinModeSwitch];
 		self.outputSegmentedControl.enabled = NO;
