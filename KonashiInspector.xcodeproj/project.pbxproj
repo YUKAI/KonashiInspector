@@ -37,7 +37,6 @@
 		E9EE76611A19CFFC004C00DB /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EE76491A19CFFC004C00DB /* iTunesArtwork.png */; };
 		E9EE76621A19CFFC004C00DB /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EE764A1A19CFFC004C00DB /* iTunesArtwork@2x.png */; };
 		E9F59A4F1A19D07700FABDCC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F59A4E1A19D07700FABDCC /* Default-568h@2x.png */; };
-		E9FA292E1BD1696600BF51E0 /* spi.bin in Resources */ = {isa = PBXBuildFile; fileRef = E9FA292D1BD1696600BF51E0 /* spi.bin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,7 +85,6 @@
 		E9EE76491A19CFFC004C00DB /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		E9EE764A1A19CFFC004C00DB /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		E9F59A4E1A19D07700FABDCC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		E9FA292D1BD1696600BF51E0 /* spi.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = spi.bin; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,7 +178,6 @@
 		E9EE761E1A19CFFC004C00DB /* KonashiInspector */ = {
 			isa = PBXGroup;
 			children = (
-				E9FA292D1BD1696600BF51E0 /* spi.bin */,
 				E9EE761F1A19CFFC004C00DB /* AppDelegate.h */,
 				E9EE76201A19CFFC004C00DB /* AppDelegate.m */,
 				E9EE76211A19CFFC004C00DB /* LaunchScreen.xib */,
@@ -375,7 +372,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9FA292E1BD1696600BF51E0 /* spi.bin in Resources */,
 				E9EE76591A19CFFC004C00DB /* Icon-60.png in Resources */,
 				E9EE76571A19CFFC004C00DB /* Icon-40.png in Resources */,
 				E9EE76621A19CFFC004C00DB /* iTunesArtwork@2x.png in Resources */,
@@ -427,21 +423,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C907D558BDA2D831D36D8C52 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EED0568458B87ED94E9E0902 /* Check Pods Manifest.lock */ = {
