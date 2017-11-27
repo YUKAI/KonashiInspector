@@ -20,6 +20,7 @@
 
 - (void)awakeFromNib
 {
+	[super awakeFromNib];
     // Initialization code
 	currentLevel_ = KonashiLevelLow;
 	self.outputSegmentedControl.enabled = NO;
