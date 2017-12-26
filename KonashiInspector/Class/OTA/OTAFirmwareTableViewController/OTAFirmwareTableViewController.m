@@ -12,7 +12,8 @@
 @interface OTAFirmwareTableViewController ()
 {
 	NSArray *contents;
-	NSArray *serverContents;
+    NSArray *serverContents;
+    NSArray *iTunesContents;
 }
 
 @end
@@ -34,12 +35,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return 2;
+	return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return section == 0 ? [contents count] : [serverContents count];
+    return section == 0 ? [contents count] : section == 1 ? [iTunesContents count] : [serverContents count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -52,8 +53,11 @@
 	
 	if (indexPath.section == 0) {
 		cell.textLabel.text = contents[indexPath.row];
-	}
-	else if (indexPath.section == 1) {
+    }
+    else if(indexPath.section == 1){
+        cell.textLabel.text = iTunesContents[indexPath.row];
+    }
+	else if (indexPath.section == 2) {
 		cell.textLabel.text = serverContents[indexPath.row][@"title"];
 	}
 	
@@ -66,7 +70,14 @@
 		[[NSNotificationCenter defaultCenter] postNotificationName:OTAFirmwareSelectedNotification object:nil userInfo:@{@"filename":contents[indexPath.row], @"data":[[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:contents[indexPath.row] ofType:@"bin"]]}];
 		[self dismissViewControllerAnimated:YES completion:^{
 		}];
-	}
+    }else if(indexPath.section == 1){
+        NSArray *documentDirectries = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentDirectory = [documentDirectries lastObject];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:OTAFirmwareSelectedNotification object:nil userInfo:@{@"filename":iTunesContents[indexPath.row], @"data":[[NSData alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@.%@",documentDirectory,iTunesContents[indexPath.row],@"bin"]]}];
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }
 	else {
 		[SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
 		[NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:serverContents[indexPath.row][@"url"]]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -86,7 +97,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-	return section == 0 ? @"Device" : @"Server";
+    return section == 0 ? @"Device" : section == 1 ? @"iTunes" : @"Server";
 }
 
 #pragma mark -
@@ -103,6 +114,20 @@
 		}
 	}
 	contents = [array copy];
+    
+    NSMutableArray *iTunesArray = [[NSMutableArray alloc] init];
+    NSArray *documentDirectries = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [documentDirectries lastObject];
+    // ドキュメントディレクトリにあるファイルリスト
+    NSError *error = nil;
+    NSFileManager *iTunesFileManager = [NSFileManager defaultManager];
+    for (NSString *file in [iTunesFileManager contentsOfDirectoryAtPath:documentDirectory error:&error]) {
+        if ([file hasSuffix:@"bin"]) {
+            NSString *filename = [file stringByDeletingPathExtension];
+            [iTunesArray addObject:filename];
+        }
+    }
+    iTunesContents = [iTunesArray copy];
 	__weak typeof(self) bself = self;
 	[NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://konashi.ux-xu.com/api/firmwares/list.json"]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
 		if (connectionError == nil) {
