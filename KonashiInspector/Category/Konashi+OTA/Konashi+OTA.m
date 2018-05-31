@@ -167,6 +167,7 @@ static NSOperationQueue *q;
 	}];
 }
 
+
 - (void)ota_stepOver
 {
 	void (^progressBlock)(CGFloat progress, NSString *status) = [self ota_progressBlock];
@@ -177,7 +178,6 @@ static NSOperationQueue *q;
 			if (progressBlock) {
 				progressBlock(-1, @"Preparing...");
 			}
-
 			dfu_control_point_data_t data;
 			data.opcode = PREPARE_DOWNLOAD;
 			NSData *commandData = [NSData dataWithBytes:&data length:1];

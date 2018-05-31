@@ -73,8 +73,17 @@
     }else if(indexPath.section == 1){
         NSArray *documentDirectries = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentDirectory = [documentDirectries lastObject];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:OTAFirmwareSelectedNotification object:nil userInfo:@{@"filename":iTunesContents[indexPath.row], @"data":[[NSData alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@.%@",documentDirectory,iTunesContents[indexPath.row],@"bin"]]}];
+        NSString *filename = iTunesContents[indexPath.row];
+        NSLog(@"%@ %@", filename,[NSString stringWithFormat:@"%@/%@",documentDirectory,iTunesContents[indexPath.row]]);
+        if([filename hasSuffix:@".bin"]){
+            [[NSNotificationCenter defaultCenter] postNotificationName:OTAFirmwareSelectedNotification object:nil userInfo:@{@"filename":filename, @"data":[[NSData alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@",documentDirectory,iTunesContents[indexPath.row]]]}];
+        }else if([filename hasSuffix:@".ebl"]){
+            [[NSNotificationCenter defaultCenter] postNotificationName:OTAFirmwareSelectedNotification object:nil userInfo:@{@"filename":filename, @"data":[[NSData alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@",documentDirectory,iTunesContents[indexPath.row]]]}];
+        }else if([filename hasSuffix:@".gbl"]){
+            [[NSNotificationCenter defaultCenter] postNotificationName:OTAFirmwareSelectedNotification object:nil userInfo:@{@"filename":filename, @"data":[[NSData alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@",documentDirectory,iTunesContents[indexPath.row]]]}];
+        }else{
+            [[NSNotificationCenter defaultCenter] postNotificationName:OTAFirmwareSelectedNotification object:nil userInfo:@{@"filename":filename,@"at":@"iTunes"}];
+        }
         [self dismissViewControllerAnimated:YES completion:^{
         }];
     }
@@ -83,7 +92,16 @@
 		[NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:serverContents[indexPath.row][@"url"]]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
 			if (connectionError == nil) {
 				dispatch_async(dispatch_get_main_queue(), ^{
-					[[NSNotificationCenter defaultCenter] postNotificationName:OTAFirmwareSelectedNotification object:nil userInfo:@{@"filename":serverContents[indexPath.row][@"title"],@"data":data}];
+                    NSString *filename = serverContents[indexPath.row][@"title"];
+                    if([filename hasSuffix:@".bin"]){
+                        [[NSNotificationCenter defaultCenter] postNotificationName:OTAFirmwareSelectedNotification object:nil userInfo:@{@"filename":filename, @"data":data}];
+                    }else if([filename hasSuffix:@".ebl"]){
+                        [[NSNotificationCenter defaultCenter] postNotificationName:OTAFirmwareSelectedNotification object:nil userInfo:@{@"filename":filename, @"data":data}];
+                    }else if([filename hasSuffix:@".gbl"]){
+                        [[NSNotificationCenter defaultCenter] postNotificationName:OTAFirmwareSelectedNotification object:nil userInfo:@{@"filename":filename, @"data":data}];
+                    }else{
+                        [[NSNotificationCenter defaultCenter] postNotificationName:OTAFirmwareSelectedNotification object:nil userInfo:@{@"filename":filename,@"at":@"server",@"app_url":serverContents[indexPath.row][@"app_url"],@"stack_url":serverContents[indexPath.row][@"stack_url"]}];
+                    }
 					[self dismissViewControllerAnimated:YES completion:^{
 					}];
 				});
@@ -122,14 +140,20 @@
     NSError *error = nil;
     NSFileManager *iTunesFileManager = [NSFileManager defaultManager];
     for (NSString *file in [iTunesFileManager contentsOfDirectoryAtPath:documentDirectory error:&error]) {
-        if ([file hasSuffix:@"bin"]) {
-            NSString *filename = [file stringByDeletingPathExtension];
-            [iTunesArray addObject:filename];
+        if([file hasSuffix:@".bin"] || [file hasSuffix:@".gbl"] || [file hasSuffix:@".ebl"]){
+            [iTunesArray addObject:file];
+        }else{
+            NSString *s = [NSString stringWithFormat:@"%@/%@",documentDirectory,file];
+            for(NSString *foldafile in [iTunesFileManager contentsOfDirectoryAtPath:s error:&error]){
+                NSLog(@"%@",foldafile);
+            }
+            [iTunesArray addObject:file];
         }
+        
     }
     iTunesContents = [iTunesArray copy];
 	__weak typeof(self) bself = self;
-	[NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://konashi.ux-xu.com/api/firmwares/list.json"]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+	[NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://konashi-test.ux-xu.com/api/firmwares/list.json"]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
 		if (connectionError == nil) {
 			dispatch_async(dispatch_get_main_queue(), ^{
 				NSError *e = nil;
