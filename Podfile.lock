@@ -16,7 +16,7 @@ PODS:
   - FontAwesomeKit/Zocial (2.1.8):
     - FontAwesomeKit/Core
   - JDStatusBarNotification (1.5.3)
-  - konashi-ios-sdk (4.1.0)
+  - konashi-ios-sdk (5.0.1)
   - M2DWebViewController (0.1.11)
   - SVProgressHUD (1.1.3)
   - SWTableViewCell (0.3.7)
@@ -34,11 +34,11 @@ SPEC CHECKSUMS:
   AMViralSwitch: caf07a95aed2055fc7bd93657166f747095174d6
   FontAwesomeKit: 64759fb28b5d2e74a1bd81553d7c11ca10e32179
   JDStatusBarNotification: 29413865af11c862c17180610b0f46a21118b412
-  konashi-ios-sdk: dd545f091380e8adf58114bf270f24f79d8b96cc
+  konashi-ios-sdk: 959ad0dd7f481b19bebbf996c5afe8ad52c3c3c4
   M2DWebViewController: ccdbbe41b792a4111672b8ad7e85b04500e6df30
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
 PODFILE CHECKSUM: 4506979b6968272dcaeb323b1364e92936b51a6d
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0
