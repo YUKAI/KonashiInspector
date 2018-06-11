@@ -379,6 +379,15 @@ didDisconnectPeripheral:(CBService *)service
 
 - (void)updateFirmware:(id)sender
 {
+    self.peripheralName = [Konashi peripheralName];
+    if ([self isKonashi3:[self peripheralName]]) {
+        NSArray* values = [self.peripheralName componentsSeparatedByString:@"-"];
+        self.peripheralNumbar = values[1];
+    }else {
+        if (currentStatus == OTAStatusWaiting) {
+            [self uploadFirmwareData];
+        }
+    }
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注意" message:@"ファームウェアアップデートの途中でBLE通信が中断されると、Konashiが正常に動作しなくなり、OTAでの復帰が不可能になります。Konashiへの給電が安定していること、iOSデバイスの電池残量が十分であること、距離が1m以内程度で遮蔽がないこと、妨害者が居ないことなどを確認の上、ユーザの責任においてアップデートを実施してください。OTAで復帰不能になった場合は有線で復帰いただけます。詳細はwww.m-pression.comのkoshianサイトをご覧ください。なお、復帰作業はユカイ工学およびマクニカ・テクスターカンパニーでは承っておりません。ご理解のほどよろしくお願いいたします。（アップデートには40秒ほどかかります。また、アップデートの前後でDEVICE_NAMEの後半6桁は保持されます。）" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
 	[alert show];
 }
@@ -471,20 +480,27 @@ didDisconnectPeripheral:(CBService *)service
                      RSSI:(NSNumber *)RSSI
 {
     NSLog(@"peripheral：%@", peripheral);
+    NSLog(@"peripheralNumber：%@", [self peripheralNumbar]);
     if([[peripheral name] hasPrefix:KONASHI3_OTA_NAME] == true && ksh3currentStatus == DFU_MODE){
         //   scanBtn.isOn = false
-        NSLog(@"ksh3　見つけました。");
-        KSH3 = peripheral;
-        // 接続開始
-        [central connectPeripheral:KSH3 options:nil];
-        [central stopScan];
+        NSArray* values = [[peripheral name] componentsSeparatedByString:@"-"];
+        if([self peripheralNumbar] == [values objectAtIndex:2]){
+            NSLog(@"ksh3　見つけました。");
+            KSH3 = peripheral;
+            // 接続開始
+            [central connectPeripheral:KSH3 options:nil];
+            [central stopScan];
+        }
     }else if([[peripheral name] hasPrefix:KONASHI3_OTA_NAME] == true &&  ksh3currentStatus == DFU_SECOND_OTA ){
         //   scanBtn.isOn = false
-        NSLog(@"ksh3　見つけました。");
-        KSH3 = peripheral;
-        // 接続開始
-        [central connectPeripheral:KSH3 options:nil];
-        [central stopScan];
+        NSArray* values = [[peripheral name] componentsSeparatedByString:@"-"];
+        if([self peripheralNumbar]  == [values objectAtIndex:2]){
+            NSLog(@"ksh3　見つけました。");
+            KSH3 = peripheral;
+            // 接続開始
+            [central connectPeripheral:KSH3 options:nil];
+            [central stopScan];
+        }
     }
 }
 // ペリフェラルへの接続が成功すると呼ばれる
@@ -612,7 +628,7 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが�
             [alert show];
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
             ksh3currentStatus = OTAStatusInitialized;
-            if (![self isStackDfu:_firmwareFilename]) {
+            if (![self isAppDfu:_firmwareFilename]) {
                 isFullData = true;
                 
                 if([at hasPrefix:@"server"]){
@@ -660,7 +676,7 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが�
     if (ksh3currentStatus == DFU_NOW_UPDATE){
         NSLog(@"DFU_NOW_UPDATE");
         double parcent = (_Head) / (_DataNum);
-        NSString *str = [NSString stringWithFormat:@"%@ uploading...", isFullData == true ? @"Stack" : @"App"];
+        NSString *str = [NSString stringWithFormat:@"%@ updating...", isFullData == true ? @"Stack" : @"App"];
         [SVProgressHUD showProgress:parcent status:str maskType:SVProgressHUDMaskTypeGradient];
         if( (_DataNum  - _Head) > _Width ) {
             _L = _Width;
