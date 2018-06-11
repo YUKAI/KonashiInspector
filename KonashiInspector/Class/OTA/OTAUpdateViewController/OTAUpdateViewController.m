@@ -36,6 +36,7 @@ typedef NS_ENUM(NSUInteger, OTAStatus) {
 	UIButton *connectButton;
 	UIButton *updateButton;
 	NSData *firmwareData;
+    NSTimer *scan_timer;
     //peripheralを格納
     CBPeripheral *KONASHI3;
     CBPeripheral *KSH3;
@@ -47,6 +48,7 @@ typedef NS_ENUM(NSUInteger, OTAStatus) {
     Boolean isFullData;
     NSString *at;
     NSString *appURL;
+    NSString *stackURL;
 }
 
 @end
@@ -112,7 +114,7 @@ static Byte const OTA_UPDATE_FINISH_COMMAND  = 0x03;
         [[self tableView] reloadData];
     }];
     [[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventDisconnectedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-        [self.centralManager scanForPeripheralsWithServices:nil options:nil];
+        [self startScan];
     }];
 	[[NSNotificationCenter defaultCenter] addObserverForName:KONASHI_OTA_ERROR_NOTIFICATION object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
 		currentStatus = OTAStatusFinished;
@@ -171,13 +173,14 @@ static Byte const OTA_UPDATE_FINISH_COMMAND  = 0x03;
                     }
                 }
                 if(error == false){
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"失敗しました" message:[NSString stringWithFormat:@"stack.eblファイルとapp.eblが%@に入っていることの確認およびファイル名をご確認ください。",filename] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"失敗しました" message:[NSString stringWithFormat:@"stack.eblとapp.eblが%@に入っていることの確認およびファイル名をご確認ください。",filename] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     [alert show];
                 }
             }else if([note.userInfo[@"at"] hasPrefix:@"server"]){
-                NSString *str = note.userInfo[@"stack_url"];
+                stackURL = note.userInfo[@"stack_url"];
                 appURL = note.userInfo[@"app_url"];
                 at = note.userInfo[@"at"];
+                NSString *str = stackURL;
                 [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
                 [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                     if (connectionError == nil) {
@@ -279,7 +282,7 @@ didDisconnectPeripheral:(CBService *)service
 			[updateButton setBackgroundColor:[UIColor colorWithRed:0.000 green:0.478 blue:1.000 alpha:1.000]];
 			[updateButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 			[updateButton addTarget:self action:@selector(updateFirmware:) forControlEvents:UIControlEventTouchUpInside];
-		}
+        }self.peripheralName = [Konashi peripheralName];
         bool iskonashi3 = [self isKonashi3:_firmwareFilename] == true && [self isKonashi3:_peripheralName] == true;
         bool iskonashi2 = [self isKonashi2:_firmwareFilename] == true && [self isKonashi2:_peripheralName] == true;
 		updateButton.enabled = (self.firmwareFilename != nil
@@ -384,6 +387,7 @@ didDisconnectPeripheral:(CBService *)service
 {
 	if ([Konashi isConnected] ) {
 		[Konashi disconnect];
+        
 	}
 	else {
 		[SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
@@ -466,7 +470,6 @@ didDisconnectPeripheral:(CBService *)service
         advertisementData:(NSDictionary *)advertisementData
                      RSSI:(NSNumber *)RSSI
 {
-    [SVProgressHUD showWithStatus:@"Preparing..." maskType:SVProgressHUDMaskTypeGradient];
     NSLog(@"peripheral：%@", peripheral);
     if([[peripheral name] hasPrefix:KONASHI3_OTA_NAME] == true && ksh3currentStatus == DFU_MODE){
         //   scanBtn.isOn = false
@@ -568,15 +571,15 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが�
         break;
         //DFU終了フラグ
     case DFU_END:
-        NSLog(@"ota アップデート完了");
+        NSLog(@"ota End");
         [_centralManager cancelPeripheralConnection:KSH3];
-        if(isFullData == true){
+        if(isFullData == true && ![self isAppDfu:_firmwareFilename]){
             isFullData = false;
-            [SVProgressHUD showWithStatus:@"reconnecting..." maskType:SVProgressHUDMaskTypeGradient];
+            [SVProgressHUD showWithStatus:@"Reconnecting..." maskType:SVProgressHUDMaskTypeGradient];
             ksh3currentStatus = DFU_SECOND_OTA;
             
             if([at hasPrefix:@"server"]){
-                [SVProgressHUD showWithStatus:@"loading image file..." maskType:SVProgressHUDMaskTypeGradient];
+                [SVProgressHUD showWithStatus:@"Download image file..." maskType:SVProgressHUDMaskTypeGradient];
                 [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:appURL]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                     if (connectionError == nil) {
                         dispatch_async(dispatch_get_main_queue(), ^{
@@ -592,7 +595,7 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが�
             }else{
                 NSArray *documentDirectries = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
                 NSString *documentDirectory = [documentDirectries lastObject];
-                NSString *s = [NSString stringWithFormat:@"%@/%@",documentDirectory,self.firmwareFilename];
+                NSString *s = [NSString stringWithFormat:@"%@/%@",documentDirectory,_firmwareFilename];
                 NSFileManager *iTunesFileManager = [NSFileManager defaultManager];
                 for(NSString *file in [iTunesFileManager contentsOfDirectoryAtPath:s error:nil]){
                     if([self isAppDfu:file]){
@@ -604,10 +607,38 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが�
                 [_centralManager connectPeripheral:KSH3 options:nil];
             }
         }else{
+            NSLog(@"ota アップデート完了");
             [SVProgressHUD dismiss];
             [alert show];
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
             ksh3currentStatus = OTAStatusInitialized;
+            if (![self isStackDfu:_firmwareFilename]) {
+                isFullData = true;
+                
+                if([at hasPrefix:@"server"]){
+                    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:stackURL]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                        if (connectionError == nil) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                firmwareData = data;
+                                [self dismissViewControllerAnimated:YES completion:^{
+                                }];
+                            });
+                        }
+                    }];
+                }else{
+                    NSArray *documentDirectries = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                    NSString *documentDirectory = [documentDirectries lastObject];
+                    NSString *s = [NSString stringWithFormat:@"%@/%@",documentDirectory,_firmwareFilename];
+                    NSFileManager *iTunesFileManager = [NSFileManager defaultManager];
+                    for(NSString *file in [iTunesFileManager contentsOfDirectoryAtPath:s error:nil]){
+                        if([self isStackDfu:file]){
+                            NSLog(@"%@",file);
+                            firmwareData = [[NSData alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@",s,file]];
+                            break;
+                        }
+                    }
+                }
+            }
         }
         break;
         //DFU中フラグ
@@ -629,7 +660,8 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが�
     if (ksh3currentStatus == DFU_NOW_UPDATE){
         NSLog(@"DFU_NOW_UPDATE");
         double parcent = (_Head) / (_DataNum);
-        [SVProgressHUD showProgress:parcent status:@"Uploading..." maskType:SVProgressHUDMaskTypeGradient];
+        NSString *str = [NSString stringWithFormat:@"%@ uploading...", isFullData == true ? @"Stack" : @"App"];
+        [SVProgressHUD showProgress:parcent status:str maskType:SVProgressHUDMaskTypeGradient];
         if( (_DataNum  - _Head) > _Width ) {
             _L = _Width;
         }else if ((_DataNum  - _Head)  <= _Width){
@@ -645,6 +677,23 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが�
         
     }
 }
+- (void)startScan
+{
+    [SVProgressHUD showWithStatus:@"Preparing..." maskType:SVProgressHUDMaskTypeGradient];
+    // Bluetooth related code
+    [self.centralManager scanForPeripheralsWithServices:nil options:nil];
+    scan_timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(stopScan) userInfo:nil repeats:YES];
+}
+
+// Stops the Scanning and Timer
+- (void)stopScan
+{
+    [SVProgressHUD dismiss];
+    [self.centralManager stopScan];
+    [scan_timer invalidate];
+    scan_timer = nil;
+}
+
 - (Boolean)isKonashi3:(NSString*)name
 {
     return [name hasPrefix:@"konashi3"];
