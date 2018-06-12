@@ -149,51 +149,57 @@ static Byte const OTA_UPDATE_FINISH_COMMAND  = 0x03;
 		NSString *filename = note.userInfo[@"filename"];
 		self.firmwareFilename = filename;
         NSLog(@"%@",filename);
-        if([filename hasSuffix:@".bin"] || [filename hasSuffix:@".ebl"]){
-            firmwareData = note.userInfo[@"data"];
-            isFullData = false;
-        }else{
-            isFullData = true;
-            if([note.userInfo[@"at"] hasPrefix:@"iTunes"]){
-                NSArray *documentDirectries = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                NSString *documentDirectory = [documentDirectries lastObject];
-                NSString *s = [NSString stringWithFormat:@"%@/%@",documentDirectory,filename];
-                NSFileManager *iTunesFileManager = [NSFileManager defaultManager];
-                for(NSString *file in [iTunesFileManager contentsOfDirectoryAtPath:s error:nil]){
-                    if([self isStackDfu:file]){
-                        NSLog(@"%@",file);
-                        firmwareData = [[NSData alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@",s,file]];
-                        break;
+        if([self isKonashi3:filename]){
+            if([filename hasSuffix:@".bin"] || [filename hasSuffix:@".ebl"]){
+                firmwareData = note.userInfo[@"data"];
+                isFullData = false;
+            }else{
+                isFullData = true;
+                if([note.userInfo[@"at"] hasPrefix:@"iTunes"]){
+                    NSArray *documentDirectries = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                    NSString *documentDirectory = [documentDirectries lastObject];
+                    NSString *s = [NSString stringWithFormat:@"%@/%@",documentDirectory,filename];
+                    NSFileManager *iTunesFileManager = [NSFileManager defaultManager];
+                    for(NSString *file in [iTunesFileManager contentsOfDirectoryAtPath:s error:nil]){
+                        if([self isStackDfu:file]){
+                            NSLog(@"%@",file);
+                            firmwareData = [[NSData alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@",s,file]];
+                            break;
+                        }
                     }
-                }
-                Boolean error = false;
-                for(NSString *file in [iTunesFileManager contentsOfDirectoryAtPath:s error:nil]){
-                    if(![self isStackDfu:file] || ![self isAppDfu:file]){
-                        error |= true;
+                    Boolean error = false;
+                    for(NSString *file in [iTunesFileManager contentsOfDirectoryAtPath:s error:nil]){
+                        if(![self isStackDfu:file] || ![self isAppDfu:file]){
+                            error |= true;
+                        }
                     }
-                }
-                if(error == false){
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"失敗しました" message:[NSString stringWithFormat:@"stack.eblとapp.eblが%@に入っていることの確認およびファイル名をご確認ください。",filename] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    [alert show];
-                }
-            }else if([note.userInfo[@"at"] hasPrefix:@"server"]){
-                stackURL = note.userInfo[@"stack_url"];
-                appURL = note.userInfo[@"app_url"];
-                at = note.userInfo[@"at"];
-                NSString *str = stackURL;
-                [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
-                [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                    if (connectionError == nil) {
+                    if(error == false){
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"失敗しました" message:[NSString stringWithFormat:@"stack.eblとapp.eblが%@に入っていることの確認およびファイル名をご確認ください。",filename] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                        [alert show];
+                    }
+                }else if([note.userInfo[@"at"] hasPrefix:@"server"]){
+                    stackURL = note.userInfo[@"stack_url"];
+                    appURL = note.userInfo[@"app_url"];
+                    at = note.userInfo[@"at"];
+                    NSString *str = stackURL;
+                    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
+                    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                        if (connectionError == nil) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                firmwareData = data;
+                                [self dismissViewControllerAnimated:YES completion:^{
+                                }];
+                            });
+                        }
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            firmwareData = data;
-                            [self dismissViewControllerAnimated:YES completion:^{
-                            }];
+                            [SVProgressHUD dismiss];
                         });
-                    }
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [SVProgressHUD dismiss];
-                    });
-                }];
+                    }];
+                }
+            }
+        }else{
+            if([filename hasSuffix:@".bin"] || [filename hasSuffix:@".ebl"]){
+                firmwareData = note.userInfo[@"data"];
             }
         }
         [self updateButtonState];
