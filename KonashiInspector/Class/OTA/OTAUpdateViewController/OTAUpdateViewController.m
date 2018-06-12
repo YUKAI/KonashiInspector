@@ -601,7 +601,7 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが�
             ksh3currentStatus = DFU_SECOND_OTA;
             
             if([at hasPrefix:@"server"]){
-                [SVProgressHUD showWithStatus:@"Download image file..." maskType:SVProgressHUDMaskTypeGradient];
+                [SVProgressHUD showWithStatus:@"Downloading App..." maskType:SVProgressHUDMaskTypeGradient];
                 [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:appURL]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                     if (connectionError == nil) {
                         dispatch_async(dispatch_get_main_queue(), ^{
@@ -682,7 +682,7 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが�
     if (ksh3currentStatus == DFU_NOW_UPDATE){
         NSLog(@"DFU_NOW_UPDATE");
         double parcent = (_Head) / (_DataNum);
-        NSString *str = [NSString stringWithFormat:@"%@ updating...", isFullData == true ? @"Stack" : @"App"];
+        NSString *str = [NSString stringWithFormat:@"Updating %@...", isFullData == true ? @"Stack" : @"App"];
         [SVProgressHUD showProgress:parcent status:str maskType:SVProgressHUDMaskTypeGradient];
         if( (_DataNum  - _Head) > _Width ) {
             _L = _Width;
