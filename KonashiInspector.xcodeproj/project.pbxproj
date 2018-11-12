@@ -419,13 +419,13 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		56E2FC4C27D6470C9152B6A4 /* [CP] Copy Pods Resources */ = {
+		856F11FC12A65D40FE7F883C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				);
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.otf",
