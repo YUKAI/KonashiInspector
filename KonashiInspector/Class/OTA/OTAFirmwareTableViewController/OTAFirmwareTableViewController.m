@@ -89,7 +89,9 @@
     }
 	else {
 		[SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
-		[NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:serverContents[indexPath.row][@"url"]]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+		[NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:serverContents[indexPath.row][@"url"]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:(NSTimeInterval)60.0]
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
 			if (connectionError == nil) {
 				dispatch_async(dispatch_get_main_queue(), ^{
                     NSString *filename = serverContents[indexPath.row][@"title"];
@@ -126,7 +128,7 @@
 	NSMutableArray *array = [[NSMutableArray alloc] init];
 	NSFileManager* fileManager = [[NSFileManager alloc] init];
 	for(NSString *content in [fileManager contentsOfDirectoryAtPath:[[NSBundle mainBundle] bundlePath] error:nil]) {
-		if ([content hasSuffix:@"bin"]) {
+		if ([content hasSuffix:@"bin"] || [content hasSuffix:@".gbl"] || [content hasSuffix:@".ebl"]) {
 			NSString *filename = [content stringByDeletingPathExtension];
 			[array addObject:filename];
 		}
@@ -153,11 +155,13 @@
     }
     iTunesContents = [iTunesArray copy];
 	__weak typeof(self) bself = self;
-	[NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://konashi-test.ux-xu.com/api/firmwares/list.json"]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://konashi-test.ux-xu.com/api/firmwares/list.json"] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:(NSTimeInterval)60.0];
+    [NSURLConnection sendAsynchronousRequest: req queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
 		if (connectionError == nil) {
 			dispatch_async(dispatch_get_main_queue(), ^{
 				NSError *e = nil;
 				serverContents = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&e];
+                NSLog(@"%@",serverContents);
 				[bself.tableView reloadData];
 			});
 		}

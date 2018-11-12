@@ -63,6 +63,7 @@ static NSString *const KONASHI3_OTA_DFU_TRANS_UUID =       @"F7BF3564-FB6D-4E53-
 static NSString *const OTA_Control_Attribute_UUID =        @"F7BF3564-FB6D-4E53-88A4-5E37E0326063";
 static NSString *const OTA_Data_Attribute_UUID =           @"984227F3-34FC-4045-A5D0-2C581F81A153";
 static NSString *const KONASHI3_OTA_NAME =                 @"ksh3-ota";
+static NSString *const KONASHI3_NAME =                 @"konashi3";
 
 static Byte const KONASHI3_DFU_MODE = 1;
 static Byte const KONASHI3_NORMAL_MODE = 0;
@@ -102,7 +103,9 @@ static Byte const OTA_UPDATE_FINISH_COMMAND  = 0x03;
 		});
 	}];
     [[NSNotificationCenter defaultCenter] addObserverForName:KonashiEventReadyToUseNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+        NSLog(@"konashi event redy to use notification");
         self.peripheralName = [Konashi peripheralName];
+        NSLog(@"%@",self.peripheralName);
         if ([self isKonashi3:[self peripheralName]]) {
             NSArray* values = [self.peripheralName componentsSeparatedByString:@"-"];
             self.peripheralNumbar = values[1];
@@ -418,7 +421,7 @@ didDisconnectPeripheral:(CBService *)service
 	}
 	else {
         ksh3currentStatus = OTAStatusInitialized;
-        if([_peripheralName hasPrefix:@"konashi3"]){
+        if([_peripheralName hasPrefix:KONASHI3_NAME]){
             [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
             _peripheral = [[[Konashi shared] activePeripheral] peripheral];
             [_peripheral discoverServices:nil];
@@ -485,22 +488,27 @@ didDisconnectPeripheral:(CBService *)service
         advertisementData:(NSDictionary *)advertisementData
                      RSSI:(NSNumber *)RSSI
 {
-    NSLog(@"peripheral：%@", peripheral);
-    NSLog(@"peripheralNumber：%@", [self peripheralNumbar]);
-    if([[peripheral name] hasPrefix:KONASHI3_OTA_NAME] == true && ksh3currentStatus == DFU_MODE){
+    NSLog(@"peripheral：%@", advertisementData);
+    NSString *name = advertisementData[@"kCBAdvDataLocalName"];
+    
+    if([name hasPrefix:KONASHI3_OTA_NAME] == true && ksh3currentStatus == DFU_MODE)
+    {
         //   scanBtn.isOn = false
         NSArray* values = [[peripheral name] componentsSeparatedByString:@"-"];
-        if([self peripheralNumbar] == [values objectAtIndex:2]){
+        NSLog(@"%@",values);
+        NSLog(@"%@",[self peripheralNumbar]);
+        NSLog(@"%@",[values objectAtIndex:[values count] - 1]);
+        if([[self peripheralNumbar] isEqualToString:[values objectAtIndex:[values count] - 1]] ){
             NSLog(@"ksh3　見つけました。");
             KSH3 = peripheral;
             // 接続開始
             [central connectPeripheral:KSH3 options:nil];
             [central stopScan];
         }
-    }else if([[peripheral name] hasPrefix:KONASHI3_OTA_NAME] == true &&  ksh3currentStatus == DFU_SECOND_OTA ){
+    }else if( [name hasPrefix:KONASHI3_OTA_NAME] == true &&  ksh3currentStatus == DFU_SECOND_OTA ){
         //   scanBtn.isOn = false
         NSArray* values = [[peripheral name] componentsSeparatedByString:@"-"];
-        if([self peripheralNumbar]  == [values objectAtIndex:2]){
+        if([[self peripheralNumbar] isEqualToString:[values objectAtIndex:[values count] - 1]]){
             NSLog(@"ksh3　見つけました。");
             KSH3 = peripheral;
             // 接続開始
@@ -540,7 +548,6 @@ didDisconnectPeripheral:(CBService *)service
         return;
     }
     int fund = 0;
-    NSLog(@"%lu個のキャラスタティックを見つけた",[service.characteristics count]);
     for (CBCharacteristic *characteristic in service.characteristics )
     {
         NSLog(@"%@",characteristic);
@@ -562,11 +569,14 @@ didDisconnectPeripheral:(CBService *)service
         _Width = 100;
         NSLog(@"%f %s",_DataNum,_Array);
         Byte tempVal = OTA_UPDATE_START_COMMAND;
-        NSData *tempNS = [NSData dataWithBytes:&tempVal length:sizeof(tempVal)];
+        NSData *tempNS = [NSData dataWithBytes:&tempVal length:sizeof(Byte)];
+        NSLog(@"%@",tempNS);
         ksh3currentStatus = DFU_START_MODE;
         [KSH3 writeValue:tempNS forCharacteristic:CHARACTERISTICS_OTA_Control_Attribute type:CBCharacteristicWriteWithResponse];
+        
+        //NSLog(@"write _ start");
     }
-    NSLog(@"Found %lu characteristics! : %@", (unsigned long)service.characteristics.count, service.characteristics);
+    //NSLog(@"Found %lu characteristics! : %@", (unsigned long)service.characteristics.count, service.characteristics);
 }
 
 - (void) peripheral:(CBPeripheral *)peripheral
@@ -574,15 +584,16 @@ didDisconnectPeripheral:(CBService *)service
               error:(NSError *)error
 {
     if (error) {
+        NSLog(@"%@ %ld",[error domain] , (long)[error code] );
         NSLog(@"Write失敗...error:%@", error);
         [SVProgressHUD dismiss];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents] ;
         ksh3currentStatus = OTAStatusInitialized;
+        [_centralManager cancelPeripheralConnection:KSH3];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"失敗しました" message:@"ファームウェアアップデートを完了できませんでした。リトライされる場合には、デバイスへの給電が安定していること、iOSデバイスとの距離が1m以内程度で遮蔽がないことを確認してください。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         return;
     }
-UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが完了しました。" message:@"Konashiは自動的にリセットされます。FWによってはリセットに電源の再供給が必要な場合がありますので、再度Connectを押してリストアップされない場合は試してみてください。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     Byte tempVal = 0;
     NSData *tempNS;
     switch (ksh3currentStatus) {
@@ -602,7 +613,10 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが�
             
             if([at hasPrefix:@"server"]){
                 [SVProgressHUD showWithStatus:@"Downloading App..." maskType:SVProgressHUDMaskTypeGradient];
-                [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:appURL]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                NSLog(@"%@",appURL);
+                
+                NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:appURL] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:(NSTimeInterval)60.0];
+                [NSURLConnection sendAsynchronousRequest: req queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                     if (connectionError == nil) {
                         dispatch_async(dispatch_get_main_queue(), ^{
                             firmwareData = data;
@@ -631,6 +645,8 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが�
         }else{
             NSLog(@"ota アップデート完了");
             [SVProgressHUD dismiss];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが完了しました。" message:@"Konashiは自動的にリセットされます。FWによってはリセットに電源の再供給が必要な場合がありますので、再度Connectを押してリストアップされない場合は試してみてください。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
             ksh3currentStatus = OTAStatusInitialized;
@@ -638,7 +654,10 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが�
                 isFullData = true;
                 
                 if([at hasPrefix:@"server"]){
-                    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:stackURL]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                    
+                    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:stackURL] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:(NSTimeInterval)60.0];
+                    NSLog(@"%@",stackURL);
+                    [NSURLConnection sendAsynchronousRequest: req queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError){
                         if (connectionError == nil) {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 firmwareData = data;
@@ -667,7 +686,8 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが�
     case DFU_UPDATE_FINISH:
             NSLog(@"DFU_UPDATE_FINISH");
         tempVal  = OTA_UPDATE_FINISH_COMMAND;
-        tempNS = [NSData dataWithBytes:&tempVal length:sizeof(tempVal)];
+        tempNS = [NSData dataWithBytes:&tempVal length:sizeof(Byte)];
+        NSLog(@"%@",tempNS);
         [KSH3 writeValue:tempNS forCharacteristic:CHARACTERISTICS_OTA_Control_Attribute type:CBCharacteristicWriteWithResponse];
 
         ksh3currentStatus = DFU_END;
@@ -681,6 +701,7 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが�
     //OTAアップデート
     if (ksh3currentStatus == DFU_NOW_UPDATE){
         NSLog(@"DFU_NOW_UPDATE");
+        
         double parcent = (_Head) / (_DataNum);
         NSString *str = [NSString stringWithFormat:@"Updating %@...", isFullData == true ? @"Stack" : @"App"];
         [SVProgressHUD showProgress:parcent status:str maskType:SVProgressHUDMaskTypeGradient];
@@ -704,7 +725,7 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが�
     [SVProgressHUD showWithStatus:@"Preparing..." maskType:SVProgressHUDMaskTypeGradient];
     // Bluetooth related code
     [self.centralManager scanForPeripheralsWithServices:nil options:nil];
-    scan_timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(stopScan) userInfo:nil repeats:YES];
+    scan_timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(stopScan) userInfo:nil repeats:YES];
 }
 
 // Stops the Scanning and Timer
@@ -722,7 +743,7 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"アップデートが�
 }
 - (Boolean)isKsh3:(NSString*)name
 {
-    return [name hasPrefix:@"Ksh3"];
+    return [name hasPrefix:@"ksh3"];
 }
 - (Boolean)isKoshianID:(NSString*)name
 {
