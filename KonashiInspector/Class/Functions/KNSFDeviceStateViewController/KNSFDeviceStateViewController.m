@@ -41,7 +41,7 @@
 	
 	batteryReadButton_.layer.borderColor = batteryLabel_.tintColor.CGColor;
 	batteryReadButton_.layer.borderWidth = 1;
-	batteryReadButton_.layer.cornerRadius = 14;
+	batteryReadButton_.layer.cornerRadius = 20;
 	rssiStrengthProgressBar_.progress = 0;
 	batteryProgressBar_.progress = 0;
 	rssiLabel_.text = @"";

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2CA81301DD6CFD7A721D0D68 /* libPods-KonashiInspector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEB1EB00032FE12C557631D /* libPods-KonashiInspector.a */; };
 		E956148D1AB980B200357FBE /* KNSFPwmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E956148C1AB980B200357FBE /* KNSFPwmViewController.m */; };
 		E967F3E31A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E967F3E11A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.m */; };
 		E967F3E41A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E967F3E21A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.xib */; };
@@ -37,12 +36,13 @@
 		E9EE76611A19CFFC004C00DB /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EE76491A19CFFC004C00DB /* iTunesArtwork.png */; };
 		E9EE76621A19CFFC004C00DB /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EE764A1A19CFFC004C00DB /* iTunesArtwork@2x.png */; };
 		E9F59A4F1A19D07700FABDCC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F59A4E1A19D07700FABDCC /* Default-568h@2x.png */; };
+		FE45ECF6552EDA748EAA834A /* libPods-KonashiInspector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9E4A891E48867A560CD074 /* libPods-KonashiInspector.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6DEB1EB00032FE12C557631D /* libPods-KonashiInspector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KonashiInspector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		96AA6CA2C327C22226084842 /* Pods-KonashiInspector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonashiInspector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector.debug.xcconfig"; sourceTree = "<group>"; };
-		DDCF45E7559DFAF904E2C98B /* Pods-KonashiInspector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonashiInspector.release.xcconfig"; path = "Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector.release.xcconfig"; sourceTree = "<group>"; };
+		2B9E4A891E48867A560CD074 /* libPods-KonashiInspector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KonashiInspector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C2343D92B74BEEEF5744C44 /* Pods-KonashiInspector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonashiInspector.release.xcconfig"; path = "Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector.release.xcconfig"; sourceTree = "<group>"; };
+		D657D7F1D0D4FF00B9CC6116 /* Pods-KonashiInspector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonashiInspector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector.debug.xcconfig"; sourceTree = "<group>"; };
 		E92026DB1A1602F8008E0924 /* KonashiInspector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KonashiInspector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E956148B1AB980B200357FBE /* KNSFPwmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNSFPwmViewController.h; sourceTree = "<group>"; };
 		E956148C1AB980B200357FBE /* KNSFPwmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNSFPwmViewController.m; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E99ACDDC1A1608C4001FEB35 /* libz.dylib in Frameworks */,
-				2CA81301DD6CFD7A721D0D68 /* libPods-KonashiInspector.a in Frameworks */,
+				FE45ECF6552EDA748EAA834A /* libPods-KonashiInspector.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,16 +104,16 @@
 			isa = PBXGroup;
 			children = (
 				E99ACDDB1A1608C4001FEB35 /* libz.dylib */,
-				6DEB1EB00032FE12C557631D /* libPods-KonashiInspector.a */,
+				2B9E4A891E48867A560CD074 /* libPods-KonashiInspector.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D36260C32F9C6253862AFACB /* Pods */ = {
+		B1F5CBDEB66C551414C872C1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				96AA6CA2C327C22226084842 /* Pods-KonashiInspector.debug.xcconfig */,
-				DDCF45E7559DFAF904E2C98B /* Pods-KonashiInspector.release.xcconfig */,
+				D657D7F1D0D4FF00B9CC6116 /* Pods-KonashiInspector.debug.xcconfig */,
+				7C2343D92B74BEEEF5744C44 /* Pods-KonashiInspector.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -124,8 +124,8 @@
 				E9F59A4E1A19D07700FABDCC /* Default-568h@2x.png */,
 				E9EE761E1A19CFFC004C00DB /* KonashiInspector */,
 				E92026DC1A1602F8008E0924 /* Products */,
-				D36260C32F9C6253862AFACB /* Pods */,
 				8374A7DAC8AF3C4D3CB24866 /* Frameworks */,
+				B1F5CBDEB66C551414C872C1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -318,12 +318,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E92026FE1A1602F8008E0924 /* Build configuration list for PBXNativeTarget "KonashiInspector" */;
 			buildPhases = (
-				EED0568458B87ED94E9E0902 /* Check Pods Manifest.lock */,
+				8472AC653530C8601C2BC710 /* [CP] Check Pods Manifest.lock */,
 				E92026D71A1602F8008E0924 /* Sources */,
 				E92026D81A1602F8008E0924 /* Frameworks */,
 				E92026D91A1602F8008E0924 /* Resources */,
-				83F08DA58D43E71458365343 /* Copy Pods Resources */,
-				0A9B0E89FBE3D86BC48C47CE /* Embed Pods Frameworks */,
+				856F11FC12A65D40FE7F883C /* [CP] Embed Pods Frameworks */,
+				862DF04B6F4B6640FE57742B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -340,7 +340,7 @@
 		E92026D31A1602F8008E0924 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Akira Matsuda";
 				TargetAttributes = {
 					E92026DA1A1602F8008E0924 = {
@@ -395,14 +395,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0A9B0E89FBE3D86BC48C47CE /* Embed Pods Frameworks */ = {
+		8472AC653530C8601C2BC710 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KonashiInspector-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		856F11FC12A65D40FE7F883C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,34 +428,26 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		83F08DA58D43E71458365343 /* Copy Pods Resources */ = {
+		862DF04B6F4B6640FE57742B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector-resources.sh",
+				"${PODS_ROOT}/FontAwesomeKit/FontAwesomeKit/FontAwesome.otf",
+				"${PODS_ROOT}/FontAwesomeKit/FontAwesomeKit/foundation-icons.ttf",
+				"${PODS_ROOT}/FontAwesomeKit/FontAwesomeKit/ionicons.ttf",
+				"${PODS_ROOT}/FontAwesomeKit/FontAwesomeKit/zocial-regular-webfont.ttf",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EED0568458B87ED94E9E0902 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -491,13 +501,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -506,6 +524,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -533,13 +552,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -547,6 +574,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -562,7 +590,7 @@
 		};
 		E92026FF1A1602F8008E0924 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96AA6CA2C327C22226084842 /* Pods-KonashiInspector.debug.xcconfig */;
+			baseConfigurationReference = D657D7F1D0D4FF00B9CC6116 /* Pods-KonashiInspector.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -586,7 +614,7 @@
 		};
 		E92027001A1602F8008E0924 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDCF45E7559DFAF904E2C98B /* Pods-KonashiInspector.release.xcconfig */;
+			baseConfigurationReference = 7C2343D92B74BEEEF5744C44 /* Pods-KonashiInspector.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
