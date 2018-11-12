@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A3D9AA8A204CA433EA96272E /* libPods-KonashiInspector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7997EA01C416CE69FFBA5B1 /* libPods-KonashiInspector.a */; };
 		E956148D1AB980B200357FBE /* KNSFPwmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E956148C1AB980B200357FBE /* KNSFPwmViewController.m */; };
 		E967F3E31A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E967F3E11A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.m */; };
 		E967F3E41A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E967F3E21A1BDC870018EB2D /* KNSFDigitalIOTableViewCell.xib */; };
@@ -40,11 +39,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E07F868218AF389003C6805 /* konashi3.0.0-dfu-app.ebl */ = {isa = PBXFileReference; lastKnownFileType = file; path = "konashi3.0.0-dfu-app.ebl"; sourceTree = "<group>"; };
-		1E35237E218B0B86001EEC2B /* KonashiInspector.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KonashiInspector.entitlements; sourceTree = "<group>"; };
-		57977CF8B2F2F04B1F118E1D /* Pods-KonashiInspector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonashiInspector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector.debug.xcconfig"; sourceTree = "<group>"; };
-		653656D21C1A156DF26D9710 /* Pods-KonashiInspector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonashiInspector.release.xcconfig"; path = "Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector.release.xcconfig"; sourceTree = "<group>"; };
-		D7997EA01C416CE69FFBA5B1 /* libPods-KonashiInspector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KonashiInspector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B9E4A891E48867A560CD074 /* libPods-KonashiInspector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KonashiInspector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C2343D92B74BEEEF5744C44 /* Pods-KonashiInspector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonashiInspector.release.xcconfig"; path = "Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector.release.xcconfig"; sourceTree = "<group>"; };
+		D657D7F1D0D4FF00B9CC6116 /* Pods-KonashiInspector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonashiInspector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector.debug.xcconfig"; sourceTree = "<group>"; };
 		E92026DB1A1602F8008E0924 /* KonashiInspector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KonashiInspector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E956148B1AB980B200357FBE /* KNSFPwmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNSFPwmViewController.h; sourceTree = "<group>"; };
 		E956148C1AB980B200357FBE /* KNSFPwmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNSFPwmViewController.m; sourceTree = "<group>"; };
@@ -95,7 +92,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E99ACDDC1A1608C4001FEB35 /* libz.dylib in Frameworks */,
-				A3D9AA8A204CA433EA96272E /* libPods-KonashiInspector.a in Frameworks */,
+				FE45ECF6552EDA748EAA834A /* libPods-KonashiInspector.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,17 +102,17 @@
 		6CA48202B77B712096DE66F5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				57977CF8B2F2F04B1F118E1D /* Pods-KonashiInspector.debug.xcconfig */,
-				653656D21C1A156DF26D9710 /* Pods-KonashiInspector.release.xcconfig */,
+				E99ACDDB1A1608C4001FEB35 /* libz.dylib */,
+				2B9E4A891E48867A560CD074 /* libPods-KonashiInspector.a */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		8374A7DAC8AF3C4D3CB24866 /* Frameworks */ = {
+		B1F5CBDEB66C551414C872C1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E99ACDDB1A1608C4001FEB35 /* libz.dylib */,
-				D7997EA01C416CE69FFBA5B1 /* libPods-KonashiInspector.a */,
+				D657D7F1D0D4FF00B9CC6116 /* Pods-KonashiInspector.debug.xcconfig */,
+				7C2343D92B74BEEEF5744C44 /* Pods-KonashiInspector.release.xcconfig */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -127,7 +124,7 @@
 				E9EE761E1A19CFFC004C00DB /* KonashiInspector */,
 				E92026DC1A1602F8008E0924 /* Products */,
 				8374A7DAC8AF3C4D3CB24866 /* Frameworks */,
-				6CA48202B77B712096DE66F5 /* Pods */,
+				B1F5CBDEB66C551414C872C1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -322,12 +319,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E92026FE1A1602F8008E0924 /* Build configuration list for PBXNativeTarget "KonashiInspector" */;
 			buildPhases = (
-				D29963269B012974B29101CE /* [CP] Check Pods Manifest.lock */,
+				8472AC653530C8601C2BC710 /* [CP] Check Pods Manifest.lock */,
 				E92026D71A1602F8008E0924 /* Sources */,
 				E92026D81A1602F8008E0924 /* Frameworks */,
 				E92026D91A1602F8008E0924 /* Resources */,
-				09DA301A563620CBACA2D3D2 /* [CP] Embed Pods Frameworks */,
-				56E2FC4C27D6470C9152B6A4 /* [CP] Copy Pods Resources */,
+				856F11FC12A65D40FE7F883C /* [CP] Embed Pods Frameworks */,
+				862DF04B6F4B6640FE57742B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -407,14 +404,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		09DA301A563620CBACA2D3D2 /* [CP] Embed Pods Frameworks */ = {
+		8472AC653530C8601C2BC710 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +420,26 @@
 			showEnvVarsInLog = 0;
 		};
 		56E2FC4C27D6470C9152B6A4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.otf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/foundation-icons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zocial-regular-webfont.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		862DF04B6F4B6640FE57742B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -437,33 +454,11 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.otf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/foundation-icons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ionicons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zocial-regular-webfont.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D29963269B012974B29101CE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-KonashiInspector-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -588,7 +583,7 @@
 		};
 		E92026FF1A1602F8008E0924 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57977CF8B2F2F04B1F118E1D /* Pods-KonashiInspector.debug.xcconfig */;
+			baseConfigurationReference = D657D7F1D0D4FF00B9CC6116 /* Pods-KonashiInspector.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -613,7 +608,7 @@
 		};
 		E92027001A1602F8008E0924 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 653656D21C1A156DF26D9710 /* Pods-KonashiInspector.release.xcconfig */;
+			baseConfigurationReference = 7C2343D92B74BEEEF5744C44 /* Pods-KonashiInspector.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
