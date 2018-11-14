@@ -41,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1EFFDE34219BC80B003B431E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
 		26918558A78DE0CB3A708D44 /* Pods-KonashiInspector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonashiInspector.release.xcconfig"; path = "Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector.release.xcconfig"; sourceTree = "<group>"; };
 		2B9E4A891E48867A560CD074 /* libPods-KonashiInspector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KonashiInspector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2343D92B74BEEEF5744C44 /* Pods-KonashiInspector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonashiInspector.release.xcconfig"; path = "Pods/Target Support Files/Pods-KonashiInspector/Pods-KonashiInspector.release.xcconfig"; sourceTree = "<group>"; };
@@ -75,7 +76,6 @@
 		E9EE76361A19CFFC004C00DB /* OTAUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAUpdateViewController.h; sourceTree = "<group>"; };
 		E9EE76371A19CFFC004C00DB /* OTAUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAUpdateViewController.m; sourceTree = "<group>"; };
 		E9EE76381A19CFFC004C00DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E9EE76391A19CFFC004C00DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9EE763A1A19CFFC004C00DB /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E9EE763F1A19CFFC004C00DB /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
 		E9EE76401A19CFFC004C00DB /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
@@ -201,7 +201,7 @@
 				E9EE76251A19CFFC004C00DB /* Category */,
 				E9EE76291A19CFFC004C00DB /* Class */,
 				E9EE76381A19CFFC004C00DB /* Images.xcassets */,
-				E9EE76391A19CFFC004C00DB /* Info.plist */,
+				1EFFDE30219BC7AA003B431E /* Info.plist */,
 				E9EE763A1A19CFFC004C00DB /* main.m */,
 				E967F3E51A1BE9F60018EB2D /* KonashiInspector-Prefix.pch */,
 				E9EE763B1A19CFFC004C00DB /* Resource */,
@@ -486,6 +486,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1EFFDE30219BC7AA003B431E /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1EFFDE34219BC80B003B431E /* Base */,
+			);
+			name = Info.plist;
+			sourceTree = "<group>";
+		};
 		E9EE76211A19CFFC004C00DB /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

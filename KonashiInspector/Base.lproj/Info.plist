@@ -3,7 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>To connect to konashi, you need permission to access Bluetooth.</string>
+	<string>konashiに接続するには、Bluetoothにアクセスするための許可が必要です。
+konashiに接続するには、Bluetoothにアクセスするための許可が必要です。</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
