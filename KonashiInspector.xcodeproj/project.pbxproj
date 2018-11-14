@@ -100,13 +100,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8374A7DAC8AF3C4D3CB24866 /* Frameworks */ = {
+		6CA48202B77B712096DE66F5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				E99ACDDB1A1608C4001FEB35 /* libz.dylib */,
 				2B9E4A891E48867A560CD074 /* libPods-KonashiInspector.a */,
 			);
-			name = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		B1F5CBDEB66C551414C872C1 /* Pods */ = {
@@ -115,7 +115,7 @@
 				D657D7F1D0D4FF00B9CC6116 /* Pods-KonashiInspector.debug.xcconfig */,
 				7C2343D92B74BEEEF5744C44 /* Pods-KonashiInspector.release.xcconfig */,
 			);
-			name = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E92026D21A1602F8008E0924 = {
@@ -178,6 +178,7 @@
 		E9EE761E1A19CFFC004C00DB /* KonashiInspector */ = {
 			isa = PBXGroup;
 			children = (
+				1E35237E218B0B86001EEC2B /* KonashiInspector.entitlements */,
 				E9EE761F1A19CFFC004C00DB /* AppDelegate.h */,
 				E9EE76201A19CFFC004C00DB /* AppDelegate.m */,
 				E9EE76211A19CFFC004C00DB /* LaunchScreen.xib */,
@@ -288,6 +289,7 @@
 		E9EE763C1A19CFFC004C00DB /* Firmware */ = {
 			isa = PBXGroup;
 			children = (
+				1E07F868218AF389003C6805 /* konashi3.0.0-dfu-app.ebl */,
 				E97649B11AEA613800E34585 /* konashi2.0.0-release-04-DeviceNameBugFix.bin */,
 			);
 			path = Firmware;
@@ -346,6 +348,14 @@
 					E92026DA1A1602F8008E0924 = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = 55536VBLEE;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.WAC = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -422,6 +432,11 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.otf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/foundation-icons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zocial-regular-webfont.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -595,6 +610,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 55536VBLEE;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KonashiInspector/KonashiInspector-Prefix.pch";
@@ -603,7 +619,7 @@
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/KonashiInspector/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ux-xu.konashi.KonashiInspector";
@@ -619,11 +635,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 55536VBLEE;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KonashiInspector/KonashiInspector-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/KonashiInspector/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ux-xu.konashi.KonashiInspector";
