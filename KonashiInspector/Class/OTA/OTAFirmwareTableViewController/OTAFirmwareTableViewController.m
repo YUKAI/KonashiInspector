@@ -155,7 +155,7 @@
     }
     iTunesContents = [iTunesArray copy];
 	__weak typeof(self) bself = self;
-    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://konashi-test.ux-xu.com/api/firmwares/list.json"] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:(NSTimeInterval)60.0];
+    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://konashi.ux-xu.com/api/firmwares/list.json"] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:(NSTimeInterval)60.0];
     [NSURLConnection sendAsynchronousRequest: req queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
 		if (connectionError == nil) {
 			dispatch_async(dispatch_get_main_queue(), ^{
