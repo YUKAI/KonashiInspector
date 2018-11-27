@@ -478,11 +478,7 @@ didDisconnectPeripheral:(CBService *)service
     
     NSLog(@"state:%ld", (long)central.state);
 }
-- (void)   centralManager:(CBCentralManager *)central
-  didDisconnectPeripheral:(nonnull CBPeripheral *)peripheral error:(nullable NSError *)error
-{
-    [self updateButtonState];
-}
+
 - (void)   centralManager:(CBCentralManager *)central
     didDiscoverPeripheral:(CBPeripheral *)peripheral
         advertisementData:(NSDictionary *)advertisementData
@@ -625,7 +621,8 @@ didDisconnectPeripheral:(CBService *)service
                         });
                     }
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [_centralManager connectPeripheral:KSH3 options:nil];
+                        [self startScan];
+                        //[_centralManager connectPeripheral:KSH3 options:nil];
                     });
                 }];
             }else{
@@ -640,7 +637,8 @@ didDisconnectPeripheral:(CBService *)service
                         break;
                     }
                 }
-                [_centralManager connectPeripheral:KSH3 options:nil];
+                [self startScan];
+                //[_centralManager connectPeripheral:KSH3 options:nil];
             }
         }else{
             NSLog(@"ota アップデート完了");
@@ -720,9 +718,26 @@ didDisconnectPeripheral:(CBService *)service
         
     }
 }
+
+- (void)   centralManager:(CBCentralManager *)central
+  didDisconnectPeripheral:(nonnull CBPeripheral *)peripheral error:(nullable NSError *)error
+{
+    [self updateButtonState];
+    
+    if (ksh3currentStatus != OTAStatusInitialized) {
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents] ;
+        ksh3currentStatus = OTAStatusInitialized;
+        [SVProgressHUD dismiss];
+        KSH3 = nil;
+        NSLog(@"ksh3currentStatus != OTAStatusInitialized");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"失敗しました" message:@"ファームウェアアップデートを完了できませんでした。リトライされる場合には、デバイスへの給電が安定していること、iOSデバイスとの距離が1m以内程度で遮蔽がないことを確認してください。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+
 - (void)startScan
 {
-    [SVProgressHUD showWithStatus:@"Preparing..." maskType:SVProgressHUDMaskTypeGradient];
     // Bluetooth related code
     [self.centralManager scanForPeripheralsWithServices:nil options:nil];
     scan_timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(stopScan) userInfo:nil repeats:YES];
@@ -731,10 +746,19 @@ didDisconnectPeripheral:(CBService *)service
 // Stops the Scanning and Timer
 - (void)stopScan
 {
-    [SVProgressHUD dismiss];
     [self.centralManager stopScan];
     [scan_timer invalidate];
     scan_timer = nil;
+    
+    if (ksh3currentStatus == DFU_MODE){
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents] ;
+        [SVProgressHUD dismiss];
+        
+        ksh3currentStatus = OTAStatusInitialized;
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"失敗しました" message:@"ファームウェアアップデートを完了できませんでした。リトライされる場合には、デバイスへの給電が安定していること、iOSデバイスとの距離が1m以内程度で遮蔽がないことを確認してください。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    
 }
 
 - (Boolean)isKonashi3:(NSString*)name
